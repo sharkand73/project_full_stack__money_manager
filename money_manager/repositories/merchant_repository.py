@@ -1,4 +1,4 @@
-from money_manager.models.merchant import Merchant
+from models.merchant import Merchant
 from db.run_sql import run_sql
 
 def save(merchant):

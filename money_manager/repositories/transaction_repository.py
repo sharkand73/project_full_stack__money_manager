@@ -1,6 +1,6 @@
-from money_manager.models.transaction import Transaction
-import money_manager.repositories.merchant_repository as merchant_repo
-import money_manager.repositories.tag_repository as tag_repo
+from models.transaction import Transaction
+import repositories.merchant_repository as merchant_repo
+import repositories.tag_repository as tag_repo
 
 from db.run_sql import run_sql
 
@@ -16,12 +16,11 @@ def select_all():
     results = run_sql(sql)
     transactions = []
     for row in results:
-        name = row['name']
         merchant = merchant_repo.find_by_id(row['merchant_id'])
         amount = row('amount')
         tag = tag_repo.find_by_id(row['tag_id'])
         id = row['id']
-        transaction = Transaction(name, merchant, amount, tag, id)
+        transaction = Transaction(merchant, amount, tag, id)
         transactions.append(transaction)
     return transactions
 
@@ -30,11 +29,10 @@ def find_by_id(id):
     values = [id]
     result = run_sql(sql, values)[0]
     if result != None:
-        name = result['name']
         merchant = merchant_repo.find_by_id(result['merchant_id'])
         amount = result('amount')
         tag = tag_repo.find_by_id(result['tag_id'])
-        transaction = Transaction(name, merchant, amount, tag, id)
+        transaction = Transaction(merchant, amount, tag, id)
         return transaction
 
 def delete_all():

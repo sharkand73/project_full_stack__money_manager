@@ -1,9 +1,9 @@
-from money_manager.models.tag import Tag
+from models.tag import Tag
 from db.run_sql import run_sql
 
 def save(tag):
-    sql = "INSERT INTO tags (name) VALUES %s RETURNING id"
-    values = [tag.name]
+    sql = "INSERT INTO tags ( category ) VALUES ( %s ) RETURNING id"
+    values = [tag.category]
     results = run_sql(sql, values)
     tag.id = results[0]['id']
     return tag
@@ -13,7 +13,7 @@ def select_all():
     results = run_sql(sql)
     tags = []
     for row in results:
-        tag = Tag(row['name'], row['id'])
+        tag = Tag(row['category'], row['id'])
         tags.append(tag)
     return tags
 
@@ -22,7 +22,7 @@ def find_by_id(id):
     values = [id]
     result = run_sql(sql, values)[0]
     if result != None:
-        tag = Tag(result['name'], id)
+        tag = Tag(result['category'], id)
         return tag
 
 def delete_all():
