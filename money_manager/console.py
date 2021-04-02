@@ -22,19 +22,21 @@ tag_3 = Tag("Direct Debit")
 tag_repo.save(tag_3)
 tag_4 = Tag("Petrol")
 tag_repo.save(tag_4)
+
 merchant_1 = Merchant("Tesco")
-
+merchant_repo.save(merchant_1)
 merchant_2 = Merchant("Lidl")
-
+merchant_repo.save(merchant_2)
 merchant_3 = Merchant("Odeon Cinemas")
-
+merchant_repo.save(merchant_3)
 merchant_4 = Merchant("Baked Pizza al Taglio")
-
+merchant_repo.save(merchant_4)
 merchant_5 = Merchant("EDF Energy")
-
+merchant_repo.save(merchant_5)
 merchant_6 = Merchant("Britannia Mortgage")
-
+merchant_repo.save(merchant_6)
 merchant_7 = Merchant("Esso Maryhill")
+merchant_repo.save(merchant_7)
 
 transaction_1 = Transaction(merchant_1, tag_1, 32.50)
 
