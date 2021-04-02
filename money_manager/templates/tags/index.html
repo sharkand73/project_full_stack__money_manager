@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %} 
+    <main>
+        <table>
+            <tr>
+                <th>Category</th>
+            </tr>
+            {% for tag in tags %}
+            <tr>
+                <td>
+                {{ tag.category }}
+                </td>
+                <td>
+                    <form class="edit" action="/tags/{{ tag.id }}/edit" method="POST">
+                        <button><i class="far fa-edit"></i></button>
+                    </form>
+                </td>
+                <td> 
+                    <form class="delete" action="/tags/{{ tag.id }}/delete" method="POST">
+                        <button>
+                            <i class="fas fa-minus-circle"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </main>
+</div>
+
+{% endblock %} 

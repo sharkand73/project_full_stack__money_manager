@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %} 
+    <main>
+        <p>Edit tag name: {{ tag.category }}</p>
+        <form action="/tags/{{ tag.id }}/update" method="POST">
+            <label class="form-label" for="Category">Enter new details:</label>
+            <input class="form-text" type="text" value={{ tag.category }} name='category' autofocus required>
+            <button>
+                <i class="fas fa-check-circle"></i>
+            </button>
+        </form>
+    </main>
+
+</div>
+
+{% endblock %}
