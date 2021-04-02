@@ -38,20 +38,20 @@ merchant_repo.save(merchant_6)
 merchant_7 = Merchant("Esso Maryhill")
 merchant_repo.save(merchant_7)
 
-transaction_1 = Transaction(merchant_1, tag_1, 32.50)
-
-transaction_2 = Transaction(merchant_2, tag_2, 15.00)
-
-transaction_3 = Transaction(merchant_6, tag_3, 420.00)
-
-transaction_4 = Transaction(merchant_2, tag_1, 12.20)
-
-transaction_5 = Transaction(merchant_7, tag_4, 35.00)
-
-transaction_6 = Transaction(merchant_5, tag_3, 93.40)
-
-transaction_7 = Transaction(merchant_4, tag_2, 12.60)
-
+transaction_1 = Transaction(merchant_1, 32.50, tag_1)
+transaction_repo.save(transaction_1)
+transaction_2 = Transaction(merchant_2, 15.00, tag_2)
+transaction_repo.save(transaction_2)
+transaction_3 = Transaction(merchant_6, 420.00, tag_3)
+transaction_repo.save(transaction_3)
+transaction_4 = Transaction(merchant_2, 12.20, tag_3)
+transaction_repo.save(transaction_4)
+transaction_5 = Transaction(merchant_7, 35.00, tag_4)
+transaction_repo.save(transaction_5)
+transaction_6 = Transaction(merchant_5, 93.40, tag_3)
+transaction_repo.save(transaction_6)
+transaction_7 = Transaction(merchant_4, 12.60, tag_2)
+transaction_repo.save(transaction_7)
     
 
 pdb.set_trace()
