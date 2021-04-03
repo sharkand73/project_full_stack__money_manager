@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %} 
+    <main>
+        <table>
+            <tr>
+                <th>Category</th>
+            </tr>
+            {% for tag in tags %}
+            <tr>
+                <td>
+                {{ tag.category }}
+                </td>
+                <td>
+                    <i class="far fa-edit"></i>                   
+                </td>
+                <td>
+                    <i class="fas fa-minus-circle"></i>
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <form action="/tags" method="POST">
+                    <td>
+                        <input type="text" name="category" value="New tag" maxlength="25" required autofocus>
+                    </td>
+                    <td>
+                        <button>
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                    </td>
+                </form>
+                <td>
+                    <form action="/tags">
+                        <button>
+                            <i class="fas fa-window-close"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>         
+        </table>    
+    </main>
+</div>
+
+{% endblock %} 
