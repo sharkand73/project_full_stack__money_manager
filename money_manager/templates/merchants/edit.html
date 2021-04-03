@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %} 
+    <main>
+        <p>Edit merchant name: {{ merchant.name }}</p>
+        <form action="/merchants/{{ merchant.id }}/update" method="POST">
+            <label class="form-label" for="Name">Enter new details:</label>
+            <input class="form-text" type="text" value="{{ merchant.name }}" name='name' autofocus required>
+            <button>
+                <i class="fas fa-check-circle"></i>
+            </button>
+        </form>
+    </main>
+
+</div>
+
+{% endblock %}

@@ -9,8 +9,8 @@ tags_blueprint = Blueprint("tags", __name__)
 
 @tags_blueprint.route("/tags")
 def tags():
-    tags = tag_repo.select_all()
-    return render_template("/tags/index.html", tags = tags, title = "View Tags")
+    tags_list = tag_repo.select_all()
+    return render_template("/tags/index.html", tags = tags_list, title = "View Tags")
 
 @tags_blueprint.route("/tags/<id>/edit", methods=["POST"])
 def edit(id):

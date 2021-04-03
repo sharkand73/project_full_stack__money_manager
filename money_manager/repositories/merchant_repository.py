@@ -29,5 +29,14 @@ def delete_all():
     sql = "DELETE FROM merchants"
     run_sql(sql)
 
+def update(merchant):
+    sql = "UPDATE merchants SET name=%s WHERE id=%s"
+    values = [merchant.name, merchant.id]
+    run_sql(sql, values)
 
+def delete(merchant):
+    if len(select_all())>1:
+        sql = "DELETE FROM merchants WHERE id=%s"
+        values = [merchant.id]
+        run_sql(sql, values)
     

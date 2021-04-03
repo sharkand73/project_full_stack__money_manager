@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %} 
+    <main>
+        <table>
+            <tr>
+                <th>Merchant</th>
+            </tr>
+            {% for merchant in merchants %}
+            <tr>
+                <td>
+                {{ merchant.name }}
+                </td>
+                <td>
+                    <form class="edit" action="/merchants/{{ merchant.id }}/edit" method="POST">
+                        <button><i class="far fa-edit"></i></button>
+                    </form>
+                </td>
+                <td> 
+                    <form class="delete" action="/merchants/{{ merchant.id }}/delete" method="POST">
+                        <button>
+                            <i class="fas fa-minus-circle"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>
+                    <form action="/merchants/new" method="POST">
+                        <button>
+                            <i class="fas fa-plus-circle"></i>
+                        </button>
+                    </form>    
+                </td>
+            </tr>
+        </table>
+    </main>
+</div>
+
+{% endblock %} 

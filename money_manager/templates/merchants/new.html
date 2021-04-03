@@ -4,12 +4,12 @@
     <main>
         <table>
             <tr>
-                <th>Category</th>
+                <th>Name</th>
             </tr>
-            {% for tag in tags %}
+            {% for merchant in merchants %}
             <tr>
                 <td>
-                {{ tag.category }}
+                {{ merchant.name }}
                 </td>
                 <td>
                     <i class="far fa-edit"></i>                   
@@ -20,9 +20,9 @@
             </tr>
             {% endfor %}
             <tr>
-                <form action="/tags" method="POST">
+                <form action="/merchants" method="POST">
                     <td>
-                        <input type="text" name="category" placeholder="New tag" maxlength="25" required autofocus>
+                        <input type="text" name="name" placeholder="New merchant" maxlength="40" required autofocus>
                     </td>
                     <td>
                         <button>
@@ -31,7 +31,7 @@
                     </td>
                 </form>
                 <td>
-                    <form action="/tags">
+                    <form action="/merchants">
                         <button>
                             <i class="fas fa-window-close"></i>
                         </button>
