@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %} 
+    <main>
+        <table>
+            <tr>
+                <th>Merchant</th>
+                <th>Amount</th>
+                <th>Tag</th>
+            </tr>
+            {% for transaction in transactions %}
+            <tr>
+                <td>
+                {{ transaction.merchant.name }}
+                </td>
+                <td>
+                    {{ "£%.2f"|format(transaction.amount) }}
+                </td>
+                <td>
+                    {{ transaction.tag.category}}
+                </td>
+                <td>
+                    <i class="far fa-edit"></i>                   
+                </td>
+                <td>
+                    <i class="fas fa-minus-circle"></i>
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <form action="/transactions" method="POST">
+                    <td>
+                        <select name="merchant_id" placeholder="Merchant" required autofocus>
+                            {%for merchant in merchants %}
+                            <option value="{{ merchant.id }}">{{ merchant.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td>
+                        <input name="amount" type="number" min="0.01" max="10000" step="0.01" required>
+                    </td>
+                    <td>
+                        <select name="tag_id" placeholder="Tag"  required autofocus>
+                            {%for tag in tags %}
+                            <option value="{{ tag.id }}">{{ tag.category }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+
+
+                    <td>
+                        <button>
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                    </td>
+                </form>
+                <td>
+                    <form action="/transactions">
+                        <button>
+                            <i class="fas fa-window-close"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>    
+        </table>    
+    </main>
+</div>
+
+{% endblock %} 

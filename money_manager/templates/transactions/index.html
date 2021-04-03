@@ -14,7 +14,7 @@
                 {{ transaction.merchant.name }}
                 </td>
                 <td>
-                    {{ transaction.amount }}
+                    {{ "£%.2f"|format(transaction.amount) }}
                 </td>
                 <td>
                     {{ transaction.tag.category}}
@@ -35,11 +35,22 @@
             {% endfor %}
             <tr>
                 <td>
-                    <form action="/transaction/new" method="POST">
+                    <form action="/transactions/new" method="POST">
                         <button>
                             <i class="fas fa-plus-circle"></i>
                         </button>
                     </form>    
+                </td>
+            </tr>
+            
+            <tr><td><br></td></tr>
+            <tr><td><br></td></tr>
+            <tr><td><br></td></tr>
+                <td>
+                    TOTAL:
+                </td>
+                <td>
+                    {{ "£%.2f"|format(total) }}
                 </td>
             </tr>
         </table>

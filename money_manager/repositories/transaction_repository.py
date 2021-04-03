@@ -5,7 +5,7 @@ import repositories.tag_repository as tag_repo
 from db.run_sql import run_sql
 
 def save(transaction):
-    sql = "INSERT INTO transactions ( merchant_id,amount,tag_id ) VALUES ( %s,%s,%s ) RETURNING id"
+    sql = "INSERT INTO transactions (merchant_id,amount,tag_id) VALUES (%s,%s,%s) RETURNING id"
     values = [transaction.merchant.id, transaction.amount, transaction.tag.id]
     results = run_sql(sql, values)
     transaction.id = results[0]['id']
@@ -48,3 +48,8 @@ def update(transaction):
     sql = "UPDATE transactions SET ( merchant_id, amount, tag_id ) = ( %s,%s,%s ) WHERE id=%s"
     values = [transaction.merchant.id, transaction.amount, transaction.tag.id, transaction.id]
     run_sql(sql, values)
+
+def sum():
+    sql = "SELECT SUM(amount) FROM transactions"
+    total = run_sql(sql)
+    return total
