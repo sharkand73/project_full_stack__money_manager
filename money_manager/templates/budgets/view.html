@@ -20,9 +20,9 @@
         </tr>
     {% if transactions == [] %}
         <!-- <tr><td><br></td></tr> -->
-    </table>
-    <p>There are no transactions in this budget.</p>
-       
+        <tr>
+            <td>No</td><td>transactions.</td>
+        </tr>
     {% endif %}
 
     {% if transactions != [] %}
@@ -55,6 +55,7 @@
             </td>
         </tr>
         {% endfor %}
+    {% endif %}
         
         <tr><td><br></td></tr>
         <tr>
@@ -77,6 +78,7 @@
         </tr>
         <tr>
             <td></td>
+            <td></td>
             <td>---------------</td>
         </tr>
         <tr>
@@ -86,7 +88,12 @@
         </tr>
     </table>
 
-    {% endif %}
+    
+
+    <a href="/budgets">
+        <button>
+            <i class="far fa-arrow-alt-circle-left"></i>
+        </button>
 </main>
 
 </div>

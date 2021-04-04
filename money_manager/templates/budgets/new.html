@@ -2,6 +2,101 @@
 
 {% block content %} 
 
+<main>
+    <header class="budget-header">
+        <ul class="top-menu">
+            <li class="selected" >view all</li>
+            <li>details</li>
+            <li>new</li>
+            <li>edit</li>
+        </ul>
+    </header>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Amount</th>
+        </tr>
+    {% if budgets == [] %}
+        <!-- <tr><td><br></td></tr> -->
+    </table>
+    <p>You haven't created a budget yet.</p>
+    
+    {% endif %}
+
+    {% if budgets != [] %}
+        
+        {% for budget in budgets %}
+        <tr
+        {% if budget.color == 'red' %}
+            class="red"
+        {% endif %}
+        {% if budget.color == 'blue' %}
+            class="blue"
+        {% endif %}
+        >
+            <td>
+                {{ budget.name }}
+            </td>
+            <td>
+                {{ budget.start_date.strftime("%d-%m-%Y") }}
+            </td>
+            <td>
+                {{ budget.end_date.strftime("%d-%m-%Y") }}
+            </td>
+            <td>
+                {{ "£%.2f"|format(budget.amount)}}
+            </td>
+            <td>            
+                <button><i class="far fa-eye"></i></button>
+            </td>
+            <td>
+                <button><i class="far fa-edit"></i></button>
+            </td>
+            <td> 
+                <i class="fas fa-minus-circle"></i>
+            <td>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    {% endif %}     
+
+        <tr>
+            <form action="/budgets" method="POST">
+                <td>
+                    <input type="text" maxlength="25" placeholder="Budget name" name="name" required autofocus>
+                </td>
+                <td>
+                    <input type="date" placeholder="Start date" name="start_date" required>
+                </td>
+                <td>
+                    <input type="date" placeholder="End date" name="end_date" required>
+                </td>
+                <td>
+                    <input type="number" placeholder="Amount" min="0.01" max="10000" step="0.01" name="amount" required>
+                </td>
+                <td>
+                    <button>
+                        <i class="fas fa-check-circle"></i>
+                    </button>
+                </td>
+            </form>
+            <form action="/budgets">
+                <td>
+                    <button>
+                        <i class="fas fa-window-close"></i>
+                    </button>
+                </td>
+            </form>
+        </tr>
+    </table>
+
+
+</main>
+
+
 </div>
 
 {% endblock %}
