@@ -5,6 +5,7 @@ class Budget:
         self.end_date = end_date
         self.amount = amount
         self.id = id
+        self.color = ""
 
     def time_period(self):
         time_period = (self.end_date - self.start_date).days + 1

@@ -25,7 +25,7 @@
             {% for transaction in transactions %}
             <tr>
                 <td>
-                    {{ transaction.date}}
+                    {{ transaction.date.strftime("%d-%m-%Y") }}
                 </td>
                 <td>
                     {{ transaction.merchant.name }}

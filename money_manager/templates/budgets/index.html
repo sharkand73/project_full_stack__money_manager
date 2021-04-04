@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %} 
+
+<main>
+    <header class="budget-header">
+        <ul class="top-menu">
+            <li class="selected" >view all</li>
+            <li>details</li>
+            <li>new</li>
+            <li>edit</li>
+        </ul>
+    </header>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Amount</th>
+        </tr>
+    {% if budgets == [] %}
+        <!-- <tr><td><br></td></tr> -->
+    </table>
+    <p>You haven't created a budget yet.</p>
+    <form action="/budgets/new" method="POST">
+        <button>
+            <i class="fas fa-plus-circle"></i>
+        </button>
+    </form>    
+    {% endif %}
+
+    {% if budgets != [] %}
+        
+        {% for budget in budgets %}
+        <tr
+        {% if budget.color == 'red' %}
+            class="red"
+        {% endif %}
+        {% if budget.color == 'blue' %}
+            class="blue"
+        {% endif %}
+        >
+            <td>
+                {{ budget.name }}
+            </td>
+            <td>
+                {{ budget.start_date.strftime("%d-%m-%Y") }}
+            </td>
+            <td>
+                {{ budget.start_date.strftime("%d-%m-%Y") }}
+            </td>
+            <td>
+                {{ "£%.2f"|format(budget.amount)}}
+            </td>
+            <td>
+                <form class="view" action="/budgets/{{ budget.id }}" method="GET">
+                    <i class="far fa-eye"></i>
+                </form>
+            </td>
+            <td>
+                <form class="edit" action="/budgets/{{ budget.id }}/edit" method="POST">
+                    <button><i class="far fa-edit"></i></button>
+                </form>
+            </td>
+            <td> 
+                <form class="delete" action="/budgets/{{ budget.id }}/delete" method="POST">
+                    <button>
+                        <i class="fas fa-minus-circle"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                <form action="/budgets/new" method="POST">
+                    <button>
+                        <i class="fas fa-plus-circle"></i>
+                    </button>
+                </form>    
+            </td>
+        </tr>
+        
+        <tr><td><br></td></tr>
+        <tr>
+            <td></td>
+            <td>
+                TOTAL:
+            </td>
+            <td>
+                {{ "£%.2f"|format(total) }}
+            </td>
+        </tr>
+    </table>
+
+    {% endif %}
+</main>
+
+
+
+</div>
+
+{% endblock %}
