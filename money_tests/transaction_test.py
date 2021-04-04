@@ -3,6 +3,7 @@ import unittest
 from money_manager.models.merchant import Merchant
 from money_manager.models.tag import Tag
 from money_manager.models.transaction import Transaction
+from datetime import datetime
 
 class TestTransaction(unittest.TestCase):
     def setUp(self):
@@ -10,8 +11,12 @@ class TestTransaction(unittest.TestCase):
         self.tag_2 = Tag("Entertainment")
         self.merchant_1 = Merchant("Tesco")
         self.merchant_2 = Merchant("Odeon Cinemas")
-        self.transaction_1 = Transaction(self.merchant_1, self.tag_1, 32.50)
-        self.transaction_2 = Transaction(self.merchant_2, self.tag_2, 15.00)
+        self.date_1 = datetime(2021, 3, 31)
+        self.transaction_1 = Transaction(self.date_1, self.merchant_1, 32.50, self.tag_1)
+        self.transaction_2 = Transaction(self.date_1, self.merchant_2, 15.00, self.tag_2)
+
+    def test_transaction_has_date(self):
+        self.assertEqual("31-03-2021", self.transaction_1.date.strftime("%d-%m-%Y"))
 
     def test_transaction_has_merchant(self):
         self.assertEqual("Tesco", self.transaction_1.merchant.name)
