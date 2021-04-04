@@ -57,4 +57,7 @@ def display(budget):
 def spend(budget):
     sql = "SELECT SUM(amount) FROM transactions WHERE (date>=%s AND date<=%s)"
     values = [budget.start_date.strftime("%Y-%m-%d"), budget.end_date.strftime("%Y-%m-%d")]
-    return run_sql(sql, values)[0][0]
+    spend = run_sql(sql, values)[0][0]
+    if spend == None:
+        spend = 0
+    return spend

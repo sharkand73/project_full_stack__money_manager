@@ -2,6 +2,93 @@
 
 {% block content %} 
 
+<main>
+    <header class="budget-header">
+        <ul class="top-menu">
+            <li>view all</li>
+            <li class="selected">details</li>
+            <li>new</li>
+            <li>edit</li>
+        </ul>
+    </header>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Merchant</th>
+            <th>Amount</th>
+            <th>Tag</th>
+        </tr>
+    {% if transactions == [] %}
+        <!-- <tr><td><br></td></tr> -->
+    </table>
+    <p>There are no transactions in this budget.</p>
+       
+    {% endif %}
+
+    {% if transactions != [] %}
+        
+        {% for transaction in transactions %}
+        <tr>
+            <td>
+                {{ transaction.date.strftime("%d-%m-%Y") }}
+            </td>
+            <td>
+                {{ transaction.merchant.name }}
+            </td>
+            <td>
+                {{ "£%.2f"|format(transaction.amount) }}
+            </td>
+            <td>
+                {{ transaction.tag.category}}
+            </td>
+            <td>
+                <form class="edit" action="/transactions/{{ transaction.id }}/edit" method="POST">
+                    <button><i class="far fa-edit"></i></button>
+                </form>
+            </td>
+            <td> 
+                <form class="delete" action="/transactions/{{ transaction.id }}/delete" method="POST">
+                    <button>
+                        <i class="fas fa-minus-circle"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        
+        <tr><td><br></td></tr>
+        <tr>
+            <td></td>
+            <td>
+                TOTAL SPEND:
+            </td>
+            <td>
+                {{ "£%.2f"|format(spend) }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                ALLOWANCE:
+            </td>
+            <td>
+                {{ "£%.2f"|format(budget.amount) }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>---------------</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>SURPLUS:</td>
+            <td class="{{ budget.color }}">{{ "£%.2f"|format((budget.amount - spend)) }}</td>
+        </tr>
+    </table>
+
+    {% endif %}
+</main>
+
 </div>
 
 {% endblock %}

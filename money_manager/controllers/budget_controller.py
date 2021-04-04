@@ -11,20 +11,23 @@ from models.budget import Budget
 
 budgets_blueprint = Blueprint("budgets", __name__)
 
-@budgets_blueprint.route("/budget")
+@budgets_blueprint.route("/budgets")
 def budgets():
     budgets = budget_repo.select_all()
     for budget in budgets:
-        colors = ['red', 'blue']
+        colors = ['blue', 'red']
         spend = budget_repo.spend(budget)
         budget.color = colors[(spend > budget.amount)]
-    return render_template("/budgets/index.html", title = "All Budgets")
+    return render_template("/budgets/index.html", budgets = budgets, title = "All Budgets")
 
 @budgets_blueprint.route("/budgets/<id>")
-def show():
+def show(id):
     budget = budget_repo.find_by_id(id)
     transactions = budget_repo.display(budget)
-    return render_template("budgets/view.html", budget = budget, transaction = transactions, title = "View Budget")
+    spend = budget_repo.spend(budget)
+    colors = ['blue', 'red']
+    budget.color = colors[(spend > budget.amount)]
+    return render_template("budgets/view.html", budget = budget, spend = spend, transaction = transactions, title = "View Budget")
     
 
 @budgets_blueprint.route("/budgets/new")
@@ -44,7 +47,9 @@ def update():
     pass
 
 @budgets_blueprint.route("/budgets/<id>/delete", methods = ["POST"])
-def delete():
-    pass
+def delete(id):
+    budget = budget_repo.find_by_id(id)
+    budget_repo.delete(budget)
+    return redirect("/budgets")
 
         
