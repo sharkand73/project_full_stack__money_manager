@@ -18,8 +18,7 @@ def transactions():
 @transactions_blueprint.route("/transactions/<id>/delete", methods=["POST"])
 def delete(id):
     transaction = transaction_repo.find_by_id(id)
-    if len(transaction_repo.select_all()) > 1:
-        transaction_repo.delete(transaction)
+    transaction_repo.delete(transaction)
     return redirect("/transactions")
 
 @transactions_blueprint.route("/transactions/new", methods=["POST"])
