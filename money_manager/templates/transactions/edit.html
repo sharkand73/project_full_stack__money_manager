@@ -5,12 +5,16 @@
     <main>
         <table>
             <tr>
+                <th>Date</th>
                 <th>Merchant</th>
                 <th>Amount</th>
                 <th>Tag</th>
             </tr>
             <tr>
                 <form action="/transactions/{{ transaction.id }}/update" method="POST">
+                    <td>
+                        <input type="date" value="{{ transaction.date }}" name="date">
+                    </td>
                     <td>
                         <select name="merchant_id" autofocus>
                             {%for merchant in merchants %}

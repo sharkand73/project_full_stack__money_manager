@@ -30,10 +30,11 @@ def new():
 
 @transactions_blueprint.route("/transactions", methods=["POST"])
 def save():
+    date = request.form['date']
     merchant = merchant_repo.find_by_id(request.form['merchant_id'])
     amount = request.form['amount']
     tag= tag_repo.find_by_id(request.form['tag_id'])
-    new_transaction = Transaction(merchant, amount, tag)
+    new_transaction = Transaction(date, merchant, amount, tag)
     transaction_repo.save(new_transaction)
     return redirect("/transactions")
 
@@ -46,9 +47,10 @@ def edit(id):
 
 @transactions_blueprint.route("/transactions/<id>/update", methods=["POST"])
 def update(id):
+    date = request.form['date']
     merchant = merchant_repo.find_by_id(request.form['merchant_id'])
     amount = request.form['amount']
     tag = tag_repo.find_by_id(request.form['tag_id'])
-    transaction = Transaction(merchant, amount, tag, id)
+    transaction = Transaction(date, merchant, amount, tag, id)
     transaction_repo.update(transaction)
     return redirect("/transactions")

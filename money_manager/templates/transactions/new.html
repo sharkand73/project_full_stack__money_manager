@@ -4,12 +4,14 @@
     <main>
         <table>
             <tr>
+                <th>Date</th>
                 <th>Merchant</th>
                 <th>Amount</th>
                 <th>Tag</th>
             </tr>
             {% for transaction in transactions %}
             <tr>
+                <td>{{ transaction.date }}</td>
                 <td>
                 {{ transaction.merchant.name }}
                 </td>
@@ -29,6 +31,9 @@
             {% endfor %}
             <tr>
                 <form action="/transactions" method="POST">
+                    <td>
+                        <input type="date" name = "date" placeholder="Date">
+                    </td>
                     <td>
                         <select name="merchant_id" placeholder="Merchant" required autofocus>
                             {%for merchant in merchants %}

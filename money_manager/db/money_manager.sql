@@ -26,5 +26,8 @@ CREATE TABLE budgets (
     start_date DATE,
     end_date DATE,
     amount FLOAT
-)
+);
+
+INSERT INTO merchants (name) VALUES ('Tesco');
+INSERT INTO tags (category) VALUES ('Groceries');
 
