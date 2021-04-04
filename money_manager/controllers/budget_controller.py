@@ -52,13 +52,23 @@ def save():
     budget_repo.save(budget)
     return redirect("/budgets")
 
-@budgets_blueprint.route("/budgets/<id>/edit")
-def edit():
-    pass
+@budgets_blueprint.route("/budgets/<id>/edit", methods=["POST"])
+def edit(id):
+    budget = budget_repo.find_by_id(id)
+    return render_template("budgets/edit.html", budget = budget, title = "Edit Budget")
 
 @budgets_blueprint.route("/budgets/<id>", methods = ["POST"])
-def update():
-    pass
+def update(id):
+    name = request.form['name']
+    start_string = request.form['start_date']
+    end_string = request.form['end_date']
+    start_date = convert_date(start_string)
+    end_date = convert_date(end_string)
+    amount = request.form['amount']
+    budget = Budget(name, start_date, end_date, amount, id)
+    budget_repo.update(budget)
+    return redirect("/budgets")
+    
 
 @budgets_blueprint.route("/budgets/<id>/delete", methods = ["POST"])
 def delete(id):

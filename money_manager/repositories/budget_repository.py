@@ -17,7 +17,7 @@ def select_all():
 
 def save(budget):
     sql = "INSERT INTO budgets (name,start_date,end_date,amount) VALUES (%s,%s,%s,%s) RETURNING id"
-    values = [budget.name, budget.start_date, budget.end_date, budget.amount]
+    values = [budget.name, budget.start_date.strftime("%Y-%m-%d"), budget.end_date.strftime("%Y-%m-%d"), budget.amount]
     result = run_sql(sql, values)[0]
     budget.id = result['id']
     return budget
@@ -36,6 +36,11 @@ def find_by_id(id):
 def delete(budget):
     sql = "DELETE FROM budgets WHERE id=%s"
     values = [budget.id]
+    run_sql(sql, values)
+
+def update(budget):
+    sql = "UPDATE budgets SET ( name,start_date,end_date,amount )=( %s,%s,%s,%s ) WHERE id=%s"
+    values = [budget.name, budget.start_date.strftime("%Y-%m-%d"), budget.end_date.strftime("%Y-%m-%d"), budget.amount, budget.id]
     run_sql(sql, values)
 
 def display(budget):
