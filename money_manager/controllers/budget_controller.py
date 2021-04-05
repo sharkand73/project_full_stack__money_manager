@@ -31,7 +31,7 @@ def show(id):
     return render_template("budgets/view.html", budget = budget, spend = spend, transactions = transactions, title = "View Budget")
     
 
-@budgets_blueprint.route("/budgets/new", methods = ["POST"])
+@budgets_blueprint.route("/budgets/new")
 def new():
     budgets = budget_repo.select_all()
     for budget in budgets:
@@ -52,7 +52,7 @@ def save():
     budget_repo.save(budget)
     return redirect("/budgets")
 
-@budgets_blueprint.route("/budgets/<id>/edit", methods=["POST"])
+@budgets_blueprint.route("/budgets/<id>/edit")
 def edit(id):
     budget = budget_repo.find_by_id(id)
     return render_template("budgets/edit.html", budget = budget, title = "Edit Budget")

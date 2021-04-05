@@ -53,14 +53,14 @@
                 {{ "£%.2f"|format(budget.amount)}}
             </td>
             <td>
-                <form class="view" action="/budgets/{{ budget.id }}" method="GET">
-                    <button><i class="far fa-eye"></i></button>
-                </form>
+                <a href="/budgets/{{ budget.id }}" class="view">
+                    <i class="far fa-eye"></i>
+                </a>
             </td>
             <td>
-                <form class="edit" action="/budgets/{{ budget.id }}/edit" method="POST">
-                    <button><i class="far fa-edit"></i></button>
-                </form>
+                <a href="/budgets/{{ budget.id }}/edit" class="edit">
+                    <i class="far fa-edit"></i>
+                </a>
             </td>
             <td> 
                 <form class="delete" action="/budgets/{{ budget.id }}/delete" method="POST">
@@ -73,19 +73,15 @@
         {% endfor %}
         <tr>
             <td>
-                <form action="/budgets/new" method="POST">
-                    <button>
+                <a href="/budgets/new" class="new">       
                         <i class="fas fa-plus-circle"></i>
-                    </button>
-                </form>    
+                </a>    
             </td>
         </tr>
     </table>
 
     {% endif %}
 </main>
-
-
 
 </div>
 

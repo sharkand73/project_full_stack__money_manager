@@ -12,9 +12,9 @@
                 {{ merchant.name }}
                 </td>
                 <td>
-                    <form class="edit" action="/merchants/{{ merchant.id }}/edit" method="POST">
-                        <button><i class="far fa-edit"></i></button>
-                    </form>
+                    <a href="/merchants/{{ merchant.id }}/edit" class="edit">
+                        <i class="far fa-edit"></i>
+                    </a>
                 </td>
                 <td> 
                     <form class="delete" action="/merchants/{{ merchant.id }}/delete" method="POST">
@@ -27,11 +27,9 @@
             {% endfor %}
             <tr>
                 <td>
-                    <form action="/merchants/new" method="POST">
-                        <button>
-                            <i class="fas fa-plus-circle"></i>
-                        </button>
-                    </form>    
+                    <a href="/merchants/new">
+                        <i class="fas fa-plus-circle"></i>
+                    </a>    
                 </td>
             </tr>
         </table>

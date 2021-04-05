@@ -11,7 +11,7 @@
             </tr>
             {% for transaction in transactions %}
             <tr>
-                <td>{{ transaction.date }}</td>
+                <td>{{ transaction.date.strftime("%d-%m-%Y") }}</td>
                 <td>
                 {{ transaction.merchant.name }}
                 </td>
@@ -32,10 +32,10 @@
             <tr>
                 <form action="/transactions" method="POST">
                     <td>
-                        <input type="date" name = "date" placeholder="Date">
+                        <input type="date" name = "date" placeholder="Date" required autofocus>
                     </td>
                     <td>
-                        <select name="merchant_id" placeholder="Merchant" required autofocus>
+                        <select name="merchant_id" placeholder="Merchant" required>
                             {%for merchant in merchants %}
                             <option value="{{ merchant.id }}">{{ merchant.name }}</option>
                             {% endfor %}
@@ -45,7 +45,7 @@
                         <input name="amount" type="number" min="0.01" max="10000" step="0.01" required>
                     </td>
                     <td>
-                        <select name="tag_id" placeholder="Tag"  required autofocus>
+                        <select name="tag_id" placeholder="Tag"  required>
                             {%for tag in tags %}
                             <option value="{{ tag.id }}">{{ tag.category }}</option>
                             {% endfor %}

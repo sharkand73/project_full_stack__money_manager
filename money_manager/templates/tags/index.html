@@ -12,9 +12,9 @@
                 {{ tag.category }}
                 </td>
                 <td>
-                    <form class="edit" action="/tags/{{ tag.id }}/edit" method="POST">
-                        <button><i class="far fa-edit"></i></button>
-                    </form>
+                    <a href="/tags/{{ tag.id }}/edit" class="edit">
+                        <i class="far fa-edit"></i>
+                    </a>
                 </td>
                 <td> 
                     <form class="delete" action="/tags/{{ tag.id }}/delete" method="POST">
@@ -27,11 +27,9 @@
             {% endfor %}
             <tr>
                 <td>
-                    <form action="/tags/new" method="POST">
-                        <button>
-                            <i class="fas fa-plus-circle"></i>
-                        </button>
-                    </form>    
+                    <a href="/tags/new" class="new">
+                        <i class="fas fa-plus-circle"></i>
+                    </a>    
                 </td>
             </tr>
         </table>

@@ -1,0 +1,20 @@
+header {
+    background-color: mediumturquoise;
+}
+
+ul {
+    list-style: none;
+}
+
+td {
+    padding-left: 4px;
+    padding-right: 7px;
+}
+
+th {
+    text-align: left;
+}
+
+.money {
+    text-align: right;
+}

@@ -12,7 +12,7 @@ def tags():
     tags_list = tag_repo.select_all()
     return render_template("/tags/index.html", tags = tags_list, title = "View Tags")
 
-@tags_blueprint.route("/tags/<id>/edit", methods=["POST"])
+@tags_blueprint.route("/tags/<id>/edit")
 def edit(id):
     tag = tag_repo.find_by_id(id)
     return render_template("/tags/edit.html", tag = tag, title = "Edit Tag" )
@@ -30,7 +30,7 @@ def delete(id):
     tag_repo.delete(tag)
     return redirect("/tags")
 
-@tags_blueprint.route("/tags/new", methods=["POST"])
+@tags_blueprint.route("/tags/new")
 def new():
     tags = tag_repo.select_all()
     return render_template("/tags/new.html", title="New Tag", tags=tags)

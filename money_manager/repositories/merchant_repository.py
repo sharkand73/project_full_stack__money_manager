@@ -9,7 +9,7 @@ def save(merchant):
     return merchant
 
 def select_all():
-    sql = "SELECT * FROM merchants"
+    sql = "SELECT * FROM merchants ORDER BY name"
     results = run_sql(sql)
     merchants = []
     for row in results:

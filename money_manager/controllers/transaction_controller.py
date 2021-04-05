@@ -21,7 +21,7 @@ def delete(id):
     transaction_repo.delete(transaction)
     return redirect("/transactions")
 
-@transactions_blueprint.route("/transactions/new", methods=["POST"])
+@transactions_blueprint.route("/transactions/new")
 def new():
     tags = tag_repo.select_all()
     merchants = merchant_repo.select_all()
@@ -38,7 +38,7 @@ def save():
     transaction_repo.save(new_transaction)
     return redirect("/transactions")
 
-@transactions_blueprint.route("/transactions/<id>/edit", methods=["POST"])
+@transactions_blueprint.route("/transactions/<id>/edit")
 def edit(id):
     transaction = transaction_repo.find_by_id(id)
     tags = tag_repo.select_all()

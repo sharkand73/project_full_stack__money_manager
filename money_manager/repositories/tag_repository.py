@@ -9,7 +9,7 @@ def save(tag):
     return tag
 
 def select_all():
-    sql = "SELECT * FROM tags"
+    sql = "SELECT * FROM tags ORDER BY category"
     results = run_sql(sql)
     tags = []
     for row in results:

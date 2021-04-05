@@ -6,10 +6,15 @@
         <form action="/merchants/{{ merchant.id }}/update" method="POST">
             <label class="form-label" for="Name">Enter new details:</label>
             <input class="form-text" type="text" value="{{ merchant.name }}" name='name' autofocus required>
-            <button>
+            <button class="tick">
                 <i class="fas fa-check-circle"></i>
             </button>
         </form>
+        <a href="/merchants">
+            <button>
+                <i class="far fa-arrow-alt-circle-left"></i>
+            </button>
+        </a>
     </main>
 
 </div>

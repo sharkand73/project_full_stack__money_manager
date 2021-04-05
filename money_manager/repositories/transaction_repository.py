@@ -12,7 +12,7 @@ def save(transaction):
     return transaction
 
 def select_all():
-    sql = "SELECT * FROM transactions"
+    sql = "SELECT * FROM transactions ORDER BY date"
     results = run_sql(sql)
     transactions = []
     for row in results:
