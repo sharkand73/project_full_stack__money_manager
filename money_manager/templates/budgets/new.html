@@ -3,14 +3,16 @@
 {% block content %} 
 
 <main>
-    <header class="budget-header">
+    <div class="inner-header">
         <ul class="top-menu">
-            <li>view all</li>
-            <li>details</li>
-            <li class="selected">new</li>
-            <li>edit</li>
+            <li>
+                <a href="/budgets" class="text-link">VIEW ALL</a>
+            </li>
+            <li>DETAILS</li>
+            <li class="selected">NEW</li>
+            <li>EDIT</li>
         </ul>
-    </header>
+    </div>
     <table>
         <tr>
             <th>Name</th>
@@ -28,14 +30,7 @@
     {% if budgets != [] %}
         
         {% for budget in budgets %}
-        <tr
-        {% if budget.color == 'red' %}
-            class="red"
-        {% endif %}
-        {% if budget.color == 'blue' %}
-            class="blue"
-        {% endif %}
-        >
+        <tr>
             <td>
                 {{ budget.name }}
             </td>
@@ -49,10 +44,12 @@
                 {{ "£%.2f"|format(budget.amount)}}
             </td>
             <td>            
-                <button><i class="far fa-eye"></i></button>
+                <button class="view grey">
+                    <i class="far fa-eye"></i>
+                </button>
             </td>
             <td>
-                <button><i class="far fa-edit"></i></button>
+                <i class="far fa-edit"></i>                
             </td>
             <td> 
                 <i class="fas fa-minus-circle"></i>
@@ -78,20 +75,25 @@
                     <input type="number" placeholder="Amount" min="0.01" max="10000" step="0.01" name="amount" required>
                 </td>
                 <td>
-                    <button>
+                    <button class="tick">
                         <i class="fas fa-check-circle"></i>
                     </button>
                 </td>
             </form>
             <form action="/budgets">
                 <td>
-                    <button>
+                    <button class="cross">
                         <i class="fas fa-window-close"></i>
                     </button>
                 </td>
             </form>
         </tr>
     </table>
+    <a href="/budgets" class="back-link">
+        <button class="back">
+            <i class="far fa-arrow-alt-circle-left"></i>
+        </button>
+    </a>
 
 
 </main>

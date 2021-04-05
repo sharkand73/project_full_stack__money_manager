@@ -2,11 +2,12 @@
 
 {% block content %} 
     <main>
+        <div class="inner-header"></div>
         <table>
             <tr>
                 <th>Date</th>
                 <th>Merchant</th>
-                <th>Amount</th>
+                <th>Amount (£)</th>
                 <th>Tag</th>
             </tr>
             {% for transaction in transactions %}
@@ -16,7 +17,7 @@
                 {{ transaction.merchant.name }}
                 </td>
                 <td>
-                    {{ "£%.2f"|format(transaction.amount) }}
+                    {{ "%.2f"|format(transaction.amount) }}
                 </td>
                 <td>
                     {{ transaction.tag.category}}
@@ -54,14 +55,14 @@
 
 
                     <td>
-                        <button>
+                        <button class="tick">
                             <i class="fas fa-check-circle"></i>
                         </button>
                     </td>
                 </form>
                 <td>
                     <form action="/transactions">
-                        <button>
+                        <button class="cross">
                             <i class="fas fa-window-close"></i>
                         </button>
                     </form>

@@ -2,6 +2,7 @@
 
 {% block content %} 
     <main>
+        <div class="inner-header"></div>
         <table>
             <tr>
                 <th>Name</th>
@@ -25,14 +26,14 @@
                         <input type="text" name="name" placeholder="New merchant" maxlength="40" required autofocus>
                     </td>
                     <td>
-                        <button>
+                        <button class="tick">
                             <i class="fas fa-check-circle"></i>
                         </button>
                     </td>
                 </form>
                 <td>
                     <form action="/merchants">
-                        <button>
+                        <button class="cross">
                             <i class="fas fa-window-close"></i>
                         </button>
                     </form>

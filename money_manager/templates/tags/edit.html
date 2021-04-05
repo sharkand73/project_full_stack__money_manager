@@ -2,6 +2,7 @@
 
 {% block content %} 
     <main>
+        <div class="inner-header"></div>
         <p>Edit tag name: {{ tag.category }}</p>
         <form action="/tags/{{ tag.id }}/update" method="POST">
             <label class="form-label" for="Category">Enter new details:</label>
@@ -10,10 +11,8 @@
                 <i class="fas fa-check-circle"></i>
             </button>
         </form>
-        <a href="/tags">
-            <button>
-                <i class="far fa-arrow-alt-circle-left"></i>
-            </button>
+        <a href="/tags" class="back">
+            <i class="far fa-arrow-alt-circle-left"></i>
         </a>
     </main>
 

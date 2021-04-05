@@ -3,20 +3,24 @@
 {% block content %} 
 
 <main>
-    <header class="budget-header">
+    <div class="inner-header">
         <ul class="top-menu">
-            <li>view all</li>
-            <li>details</li>
-            <li>new</li>
-            <li class="selected">edit</li>
+            <li>
+               <a href="/budgets" class="text-link">VIEW ALL</a>  
+               </li>
+            <li>DETAILS</li>
+            <li>
+                <a href="/budgets/new" class="text-link">NEW</a>
+            </li>
+            <li class="selected">EDIT</li>
         </ul>
-    </header>
+    </div>
     <table>
         <tr>
             <th>Name</th>
             <th>Start Date</th>
             <th>End Date</th>
-            <th>Amount</th>
+            <th>Amount (£)</th>
         </tr>
         <tr>
             <form action="/budgets/{{ budget.id }}" method="POST">
@@ -30,16 +34,19 @@
                     <input type="date" value="{{ budget.end_date.strftime('%d-%m-%Y') }}" name="end_date" required>
                 </td>
                 <td>
-                    <input type="number" value="{{ budget.amount }}" min="0.01" max="10000" step="0.01" name="amount" required>
+                    <input type="number" value="{{ '%.2f'|format(budget.amount) }}" min="0.01" max="10000" step="0.01" name="amount" required>
                 </td>
                 <td>
-                    <button>
+                    <button class="tick">
                         <i class="fas fa-check-circle"></i>
                     </button>
                 </td>
             </form>
         </tr>
-    </table>        
+    </table>
+    <a href="/budgets" class="back">
+        <i class="far fa-arrow-alt-circle-left"></i>  
+    </a>
 </main>
 
 

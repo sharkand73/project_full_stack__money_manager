@@ -4,30 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://kit.fontawesome.com/f1eac9e8fa.js" crossorigin="anonymous"></script>
     <title>Numus - {{title}}</title>
 </head>
 <header>
     <h1>
-    NVMV$ - "nvmqvam erit pavperis."
+    NVMV$
     </h1>
+    <h3>"NUMQUAM ERIT PAUPERIS."</h3>
 </header>
 <body>
     <div>
         <section id="sidebar">
             <ul>
                 <li>
-                    <a href="/transactions">Transactions</a>
+                    <a href="/transactions" class="text-link">Transactions</a>
                 </li>
                 <li>
-                    <a href="/merchants">Merchants</a>
+                    <a href="/merchants" class="text-link">Merchants</a>
                 </li>
                 <li>
-                    <a href="/tags">Tags</a>
+                    <a href="/tags" class="text-link">Tags</a>
                 </li>
                 <li>
-                    <a href="/budgets">Budgets</a>
+                    <a href="/budgets" class="text-link">Budgets</a>
                 </li>
             </ul>
         </section>

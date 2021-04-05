@@ -15,14 +15,29 @@ header {
     font-family: 'Times New Roman', Times, serif;
 }
 
-h1 {
+h1, h3 {
     font-weight: normal;
+    margin-bottom: 0;
+    margin-top:0;
+}
+
+h3 {
+    margin-bottom: 10;
 }
 
 footer {
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 8pt;
+}
+
+a {
+    text-decoration: none;
+}
+
+.text-link:visited {
+    text-decoration: none;
+    color: inherit;
 }
 
 #sidebar {
@@ -59,18 +74,32 @@ th {
     text-align: right;
 }
 
-.delete {
+.delete, .tick, .cross, .back, .view, .edit {
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
+}
+
+.delete {
     color: #fe2c54;
 }
 
-.new, .tick {
+.edit, .edit:visited {
+    color: mediumblue;
+}
+
+.new, .tick, .view, .new:visited {
     color: limegreen;
 }
 
+.cross, .back, .back:visited {
+    color: purple;
+}
+
+.new, .back {
+    font-size: 16pt;
+}
 .grey {
     color: grey;
 }
@@ -80,17 +109,52 @@ th {
     display: flex;
     justify-content: space-around;
     margin-top: 0;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .top-menu > li {
-    padding-top: 5px;
+    padding: 5px 3px 2px 3px;
 }
 
 .selected {
     background-color: white;
+    color: black;
 }
 
-.budget-header {
+.inner-header {
     background-color: mediumturquoise;
     margin-top: 0;
+    height: 24px;
+}
+
+.red {
+    color: red;
+}
+
+/* .blue {
+    color: blue;
+} */
+
+.budget-table {
+    table-layout: fixed;
+    width: 630px;
+}
+
+.budget-cell-1  {
+    width: 162px;
+}
+
+.budget-cell-2 {
+    width: 93px;
+}
+
+#sidebar > ul > li {
+    height: 100;
+    width: 150;
+    padding: 40px 10px;
+    border-radius: 5;
+    background-color: navajowhite;
+    color:slategrey;
+    margin-top:  20px;
 }

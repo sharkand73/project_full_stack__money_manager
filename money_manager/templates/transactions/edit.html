@@ -3,6 +3,7 @@
 {% block content %} 
 
     <main>
+        <div class="inner-header"></div>
         <table>
             <tr>
                 <th>Date</th>
@@ -45,16 +46,12 @@
                             <i class="fas fa-check-circle"></i>
                         </button>
                     </td>
-                </form>
-                <td>
-                    <a href="/transactions">
-                        <button>
-                            <i class="far fa-arrow-alt-circle-left"></i>
-                        </button>
-                    </a>
-                </td>
+                </form>                
             </tr>
-        </table>        
+        </table> 
+        <a href="/transactions" class="back">
+            <i class="far fa-arrow-alt-circle-left"></i>
+        </a>       
     </main>
 
 </div>

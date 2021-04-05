@@ -3,27 +3,31 @@
 {% block content %} 
 
 <main>
-    <div class="budget-header">
+    <div class="inner-header">
         <ul class="top-menu">
-            <li class="selected" >view all</li>
-            <li>details</li>
-            <li>new</li>
-            <li>edit</li>
+            <li class="selected" >VIEW ALL</li>
+            <li>DETAILS</li>
+            <li>
+                <a href="budgets/new" class="text-link">
+                NEW
+                </a>
+            </li>
+            <li>EDIT</li>
         </ul>
     </div>
     <table>
         <tr>
-            <th>Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Amount</th>
+            <th class="budget-cell-1">Budget Name</th>
+            <th class="budget-cell-1">Start Date</th>
+            <th class="budget-cell-1">End Date</th>
+            <th class="budget-cell-2">Amount</th>
         </tr>
     {% if budgets == [] %}
         <!-- <tr><td><br></td></tr> -->
     </table>
     <p>You haven't created a budget yet.</p>
     <form action="/budgets/new" method="POST">
-        <button>
+        <button class="new">
             <i class="fas fa-plus-circle"></i>
         </button>
     </form>    
@@ -32,24 +36,17 @@
     {% if budgets != [] %}
         
         {% for budget in budgets %}
-        <tr
-        {% if budget.color == 'red' %}
-            class="red"
-        {% endif %}
-        {% if budget.color == 'blue' %}
-            class="blue"
-        {% endif %}
-        >
-            <td>
+        <tr>
+            <td class="{{ budget.color }}">
                 {{ budget.name }}
             </td>
-            <td>
+            <td class="{{ budget.color }}">
                 {{ budget.start_date.strftime("%d-%m-%Y") }}
             </td>
-            <td>
+            <td class="{{ budget.color }}">
                 {{ budget.end_date.strftime("%d-%m-%Y") }}
             </td>
-            <td>
+            <td class="{{ budget.color }}">
                 {{ "£%.2f"|format(budget.amount)}}
             </td>
             <td>
