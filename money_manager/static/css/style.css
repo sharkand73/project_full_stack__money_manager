@@ -12,22 +12,36 @@ header, footer {
 header {
     padding-top: 10px;
     padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-weight: normal;
 }
 
 footer {
     padding-top: 10px;
     padding-bottom: 10px;
+    font-size: 8pt;
+}
+
+#sidebar {
+    background-color: mediumturquoise;
 }
 
 body > div {
-    min-height: 550px;
+    height: 570px;
     display:grid;
     grid-template-columns: 
     'section main';
     grid-template-columns: 2fr 8fr;
+    margin-top: 0;
+    padding-top: 0;
 }
 
-
+main {
+    overflow: scroll;
+}
 ul {
     list-style: none;
 }
@@ -43,4 +57,40 @@ th {
 
 .money {
     text-align: right;
+}
+
+.delete {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: #fe2c54;
+}
+
+.new, .tick {
+    color: limegreen;
+}
+
+.grey {
+    color: grey;
+}
+
+.top-menu {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0;
+}
+
+.top-menu > li {
+    padding-top: 5px;
+}
+
+.selected {
+    background-color: white;
+}
+
+.budget-header {
+    background-color: mediumturquoise;
+    margin-top: 0;
 }

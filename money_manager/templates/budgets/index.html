@@ -3,14 +3,14 @@
 {% block content %} 
 
 <main>
-    <header class="budget-header">
+    <div class="budget-header">
         <ul class="top-menu">
             <li class="selected" >view all</li>
             <li>details</li>
             <li>new</li>
             <li>edit</li>
         </ul>
-    </header>
+    </div>
     <table>
         <tr>
             <th>Name</th>
@@ -63,8 +63,8 @@
                 </a>
             </td>
             <td> 
-                <form class="delete" action="/budgets/{{ budget.id }}/delete" method="POST">
-                    <button>
+                <form action="/budgets/{{ budget.id }}/delete" method="POST">
+                    <button class="delete">
                         <i class="fas fa-minus-circle"></i>
                     </button>
                 </form>
