@@ -1,6 +1,32 @@
-header {
-    background-color: mediumturquoise;
+body {
+    margin: 0;
 }
+
+header, footer {
+    background-color: mediumturquoise;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+body > div {
+    min-height: 550px;
+    display:grid;
+    grid-template-columns: 
+    'section main';
+    grid-template-columns: 2fr 8fr;
+}
+
 
 ul {
     list-style: none;
