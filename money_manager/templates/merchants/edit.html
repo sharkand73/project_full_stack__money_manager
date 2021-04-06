@@ -1,20 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %} 
-    <main>
-        <div class="inner-header"></div>
-        <p>Edit merchant name: {{ merchant.name }}</p>
-        <form action="/merchants/{{ merchant.id }}/update" method="POST">
-            <label class="form-label" for="Name">Enter new details:</label>
-            <input class="form-text" type="text" value="{{ merchant.name }}" name='name' autofocus required>
-            <button class="tick">
-                <i class="fas fa-check-circle"></i>
-            </button>
-        </form>
-        <a href="/merchants" class="back">
-            <i class="far fa-arrow-alt-circle-left"></i>
-        </a>
-    </main>
+    <section>
+        <header class="inner-header"></header>
+        <main id="table-area">
+            <p>Edit merchant name: {{ merchant.name }}</p>
+            <form action="/merchants/{{ merchant.id }}/update" method="POST">
+                <label class="form-label" for="Name">Enter new details:</label>
+                <input class="form-text" type="text" value="{{ merchant.name }}" name='name' autofocus required>
+                <button class="tick">
+                    <i class="fas fa-check-circle"></i>
+                </button>
+            </form>
+            <a href="/merchants" class="back">
+                <i class="far fa-arrow-alt-circle-left"></i>
+            </a>
+        </main>
+    </section>
 
 </div>
 

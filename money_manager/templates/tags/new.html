@@ -1,46 +1,48 @@
 {% extends "base.html" %}
 
 {% block content %} 
-    <main>
-        <table>
-            <div class="inner-header"></div>
-            <tr>
-                <th>Category</th>
-            </tr>
-            {% for tag in tags %}
-            <tr>
-                <td>
-                {{ tag.category }}
-                </td>
-                <td>
-                    <i class="far fa-edit"></i>                   
-                </td>
-                <td>
-                    <i class="fas fa-minus-circle"></i>
-                </td>
-            </tr>
-            {% endfor %}
-            <tr>
-                <form action="/tags" method="POST">
+    <section>
+        <header class="inner-header"></header>
+        <main id="table-area">
+            <table>
+                <tr>
+                    <th>Category</th>
+                </tr>
+                {% for tag in tags %}
+                <tr>
                     <td>
-                        <input type="text" name="category" placeholder="New tag" maxlength="25" required autofocus>
+                    {{ tag.category }}
                     </td>
                     <td>
-                        <button class="tick">
-                            <i class="fas fa-check-circle"></i>
-                        </button>
+                        <i class="far fa-edit"></i>                   
                     </td>
-                </form>
-                <td>
-                    <form action="/tags">
-                        <button class="cross">
-                            <i class="fas fa-window-close"></i>
-                        </button>
+                    <td>
+                        <i class="fas fa-minus-circle"></i>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <form action="/tags" method="POST">
+                        <td>
+                            <input type="text" name="category" placeholder="New tag" maxlength="25" required autofocus>
+                        </td>
+                        <td>
+                            <button class="tick">
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                        </td>
                     </form>
-                </td>
-            </tr>         
-        </table>    
-    </main>
+                    <td>
+                        <form action="/tags">
+                            <button class="cross">
+                                <i class="fas fa-window-close"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>         
+            </table>    
+        </main>
+    </section>
 </div>
 
 {% endblock %} 

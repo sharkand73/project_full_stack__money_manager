@@ -42,6 +42,9 @@ a {
 
 #sidebar {
     background-color: mediumturquoise;
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
 }
 
 body > div {
@@ -54,9 +57,13 @@ body > div {
     padding-top: 0;
 }
 
-main {
-    overflow: scroll;
+
+table {
+    height: 500px;
+    display: block;
+    overflow-y: scroll;
 }
+
 ul {
     list-style: none;
 }

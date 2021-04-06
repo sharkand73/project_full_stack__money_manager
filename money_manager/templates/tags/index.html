@@ -1,40 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %} 
-    <main>
-        <div class="inner-header"></div>
-        <table>
-            <tr>
-                <th>Category</th>
-            </tr>
-            {% for tag in tags %}
-            <tr>
-                <td>
-                {{ tag.category }}
-                </td>
-                <td>
-                    <a href="/tags/{{ tag.id }}/edit" class="edit">
-                        <i class="far fa-edit"></i>
-                    </a>
-                </td>
-                <td> 
-                    <form action="/tags/{{ tag.id }}/delete" method="POST">
-                        <button class="delete">
-                            <i class="fas fa-minus-circle"></i>
-                        </button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-            <tr>
-                <td>
-                    <a href="/tags/new" class="new">
-                        <i class="fas fa-plus-circle"></i>
-                    </a>    
-                </td>
-            </tr>
-        </table>
-    </main>
+    <section>
+        <header class="inner-header"></header>
+        <main id="table-area">
+            <table>
+                <tr>
+                    <th>Category</th>
+                </tr>
+                {% for tag in tags %}
+                <tr>
+                    <td>
+                    {{ tag.category }}
+                    </td>
+                    <td>
+                        <a href="/tags/{{ tag.id }}/edit" class="edit">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td> 
+                        <form action="/tags/{{ tag.id }}/delete" method="POST">
+                            <button class="delete">
+                                <i class="fas fa-minus-circle"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>
+                        <a href="/tags/new" class="new">
+                            <i class="fas fa-plus-circle"></i>
+                        </a>    
+                    </td>
+                </tr>
+            </table>
+        </main>
+    </section>
 </div>
 
 {% endblock %} 

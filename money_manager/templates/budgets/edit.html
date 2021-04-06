@@ -2,8 +2,8 @@
 
 {% block content %} 
 
-<main>
-    <div class="inner-header">
+<section>
+    <header class="inner-header">
         <ul class="top-menu">
             <li>
                <a href="/budgets" class="text-link">VIEW ALL</a>  
@@ -14,40 +14,43 @@
             </li>
             <li class="selected">EDIT</li>
         </ul>
-    </div>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Amount (£)</th>
-        </tr>
-        <tr>
-            <form action="/budgets/{{ budget.id }}" method="POST">
-                <td>
-                    <input type="text" maxlength="25" value="{{ budget.name }}" name="name" required autofocus>
-                </td>
-                <td>
-                    <input type="date" value="{{ budget.start_date.strftime('%d-%m-%Y') }}" name="start_date" required>
-                </td>
-                <td>
-                    <input type="date" value="{{ budget.end_date.strftime('%d-%m-%Y') }}" name="end_date" required>
-                </td>
-                <td>
-                    <input type="number" value="{{ '%.2f'|format(budget.amount) }}" min="0.01" max="10000" step="0.01" name="amount" required>
-                </td>
-                <td>
-                    <button class="tick">
-                        <i class="fas fa-check-circle"></i>
-                    </button>
-                </td>
-            </form>
-        </tr>
-    </table>
-    <a href="/budgets" class="back">
-        <i class="far fa-arrow-alt-circle-left"></i>  
-    </a>
-</main>
+    </header>
+    <main id="table-area">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Amount (£)</th>
+            </tr>
+            <tr>
+                <form action="/budgets/{{ budget.id }}" method="POST">
+                    <td>
+                        <input type="text" maxlength="25" value="{{ budget.name }}" name="name" required autofocus>
+                    </td>
+                    <td>
+                        <input type="date" value="{{ budget.start_date.strftime('%d-%m-%Y') }}" name="start_date" required>
+                    </td>
+                    <td>
+                        <input type="date" value="{{ budget.end_date.strftime('%d-%m-%Y') }}" name="end_date" required>
+                    </td>
+                    <td>
+                        <input type="number" value="{{ '%.2f'|format(budget.amount) }}" min="0.01" max="10000" step="0.01" name="amount" required>
+                    </td>
+                    <td>
+                        <button class="tick">
+                            <i class="fas fa-check-circle"></i>
+                        </button>
+                    </td>
+                </form>
+            </tr>
+        </table>
+        <a href="/budgets" class="back">
+            <i class="far fa-arrow-alt-circle-left"></i>  
+        </a>
+    </main>
+
+</section>
 
 
 </div>

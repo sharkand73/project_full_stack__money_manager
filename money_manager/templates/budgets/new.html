@@ -2,102 +2,103 @@
 
 {% block content %} 
 
-<main>
-    <div class="inner-header">
-        <ul class="top-menu">
-            <li>
-                <a href="/budgets" class="text-link">VIEW ALL</a>
-            </li>
-            <li>DETAILS</li>
-            <li class="selected">NEW</li>
-            <li>EDIT</li>
-        </ul>
-    </div>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Amount</th>
-        </tr>
-    {% if budgets == [] %}
-        <!-- <tr><td><br></td></tr> -->
-    </table>
-    <p>You haven't created a budget yet.</p>
-    
-    {% endif %}
+    <section>
+        <header class="inner-header">
+            <ul class="top-menu">
+                <li>
+                    <a href="/budgets" class="text-link">VIEW ALL</a>
+                </li>
+                <li>DETAILS</li>
+                <li class="selected">NEW</li>
+                <li>EDIT</li>
+            </ul>
+        </header>
+            <main id="table-area">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Amount</th>
+                </tr>
+            {% if budgets == [] %}
+                <!-- <tr><td><br></td></tr> -->
+            </table>
+            <p>You haven't created a budget yet.</p>
+            
+            {% endif %}
 
-    {% if budgets != [] %}
-        
-        {% for budget in budgets %}
-        <tr>
-            <td>
-                {{ budget.name }}
-            </td>
-            <td>
-                {{ budget.start_date.strftime("%d-%m-%Y") }}
-            </td>
-            <td>
-                {{ budget.end_date.strftime("%d-%m-%Y") }}
-            </td>
-            <td>
-                {{ "£%.2f"|format(budget.amount)}}
-            </td>
-            <td>            
-                <button class="view grey">
-                    <i class="far fa-eye"></i>
+            {% if budgets != [] %}
+                
+                {% for budget in budgets %}
+                <tr>
+                    <td>
+                        {{ budget.name }}
+                    </td>
+                    <td>
+                        {{ budget.start_date.strftime("%d-%m-%Y") }}
+                    </td>
+                    <td>
+                        {{ budget.end_date.strftime("%d-%m-%Y") }}
+                    </td>
+                    <td>
+                        {{ "£%.2f"|format(budget.amount)}}
+                    </td>
+                    <td>            
+                        <button class="view grey">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <i class="far fa-edit"></i>                
+                    </td>
+                    <td> 
+                        <i class="fas fa-minus-circle"></i>
+                    <td>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}     
+
+                <tr>
+                    <form action="/budgets" method="POST">
+                        <td>
+                            <input type="text" maxlength="25" placeholder="Budget name" name="name" required autofocus>
+                        </td>
+                        <td>
+                            <input type="date" placeholder="Start date" name="start_date" required>
+                        </td>
+                        <td>
+                            <input type="date" placeholder="End date" name="end_date" required>
+                        </td>
+                        <td>
+                            <input type="number" placeholder="Amount" min="0.01" max="10000" step="0.01" name="amount" required>
+                        </td>
+                        <td>
+                            <button class="tick">
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                        </td>
+                    </form>
+                    <form action="/budgets">
+                        <td>
+                            <button class="cross">
+                                <i class="fas fa-window-close"></i>
+                            </button>
+                        </td>
+                    </form>
+                </tr>
+            </table>
+            <a href="/budgets" class="back-link">
+                <button class="back">
+                    <i class="far fa-arrow-alt-circle-left"></i>
                 </button>
-            </td>
-            <td>
-                <i class="far fa-edit"></i>                
-            </td>
-            <td> 
-                <i class="fas fa-minus-circle"></i>
-            <td>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    {% endif %}     
-
-        <tr>
-            <form action="/budgets" method="POST">
-                <td>
-                    <input type="text" maxlength="25" placeholder="Budget name" name="name" required autofocus>
-                </td>
-                <td>
-                    <input type="date" placeholder="Start date" name="start_date" required>
-                </td>
-                <td>
-                    <input type="date" placeholder="End date" name="end_date" required>
-                </td>
-                <td>
-                    <input type="number" placeholder="Amount" min="0.01" max="10000" step="0.01" name="amount" required>
-                </td>
-                <td>
-                    <button class="tick">
-                        <i class="fas fa-check-circle"></i>
-                    </button>
-                </td>
-            </form>
-            <form action="/budgets">
-                <td>
-                    <button class="cross">
-                        <i class="fas fa-window-close"></i>
-                    </button>
-                </td>
-            </form>
-        </tr>
-    </table>
-    <a href="/budgets" class="back-link">
-        <button class="back">
-            <i class="far fa-arrow-alt-circle-left"></i>
-        </button>
-    </a>
+            </a>
 
 
-</main>
-
+        </main>
+    </section>
 
 </div>
 

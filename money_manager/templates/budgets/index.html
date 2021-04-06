@@ -2,84 +2,85 @@
 
 {% block content %} 
 
-<main>
-    <div class="inner-header">
-        <ul class="top-menu">
-            <li class="selected" >VIEW ALL</li>
-            <li>DETAILS</li>
-            <li>
-                <a href="budgets/new" class="text-link">
-                NEW
-                </a>
-            </li>
-            <li>EDIT</li>
-        </ul>
-    </div>
-    <table>
-        <tr>
-            <th class="budget-cell-1">Budget Name</th>
-            <th class="budget-cell-1">Start Date</th>
-            <th class="budget-cell-1">End Date</th>
-            <th class="budget-cell-2">Amount</th>
-        </tr>
-    {% if budgets == [] %}
-        <!-- <tr><td><br></td></tr> -->
-    </table>
-    <p>You haven't created a budget yet.</p>
-    <form action="/budgets/new" method="POST">
-        <button class="new">
-            <i class="fas fa-plus-circle"></i>
-        </button>
-    </form>    
-    {% endif %}
+    <section>
+        <header class="inner-header">
+            <ul class="top-menu">
+                <li class="selected" >VIEW ALL</li>
+                <li>DETAILS</li>
+                <li>
+                    <a href="budgets/new" class="text-link">
+                    NEW
+                    </a>
+                </li>
+                <li>EDIT</li>
+            </ul>
+        </header>
+        <main id="table-area">
+            <table>
+                <tr>
+                    <th class="budget-cell-1">Budget Name</th>
+                    <th class="budget-cell-1">Start Date</th>
+                    <th class="budget-cell-1">End Date</th>
+                    <th class="budget-cell-2">Amount</th>
+                </tr>
+            {% if budgets == [] %}
+                <!-- <tr><td><br></td></tr> -->
+            </table>
+            <p>You haven't created a budget yet.</p>
+            <form action="/budgets/new" method="POST">
+                <button class="new">
+                    <i class="fas fa-plus-circle"></i>
+                </button>
+            </form>    
+            {% endif %}
 
-    {% if budgets != [] %}
-        
-        {% for budget in budgets %}
-        <tr>
-            <td class="{{ budget.color }}">
-                {{ budget.name }}
-            </td>
-            <td class="{{ budget.color }}">
-                {{ budget.start_date.strftime("%d-%m-%Y") }}
-            </td>
-            <td class="{{ budget.color }}">
-                {{ budget.end_date.strftime("%d-%m-%Y") }}
-            </td>
-            <td class="{{ budget.color }}">
-                {{ "£%.2f"|format(budget.amount)}}
-            </td>
-            <td>
-                <a href="/budgets/{{ budget.id }}" class="view">
-                    <i class="far fa-eye"></i>
-                </a>
-            </td>
-            <td>
-                <a href="/budgets/{{ budget.id }}/edit" class="edit">
-                    <i class="far fa-edit"></i>
-                </a>
-            </td>
-            <td> 
-                <form action="/budgets/{{ budget.id }}/delete" method="POST">
-                    <button class="delete">
-                        <i class="fas fa-minus-circle"></i>
-                    </button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-        <tr>
-            <td>
-                <a href="/budgets/new" class="new">       
-                        <i class="fas fa-plus-circle"></i>
-                </a>    
-            </td>
-        </tr>
-    </table>
+            {% if budgets != [] %}
+                
+                {% for budget in budgets %}
+                <tr>
+                    <td class="{{ budget.color }}">
+                        {{ budget.name }}
+                    </td>
+                    <td class="{{ budget.color }}">
+                        {{ budget.start_date.strftime("%d-%m-%Y") }}
+                    </td>
+                    <td class="{{ budget.color }}">
+                        {{ budget.end_date.strftime("%d-%m-%Y") }}
+                    </td>
+                    <td class="{{ budget.color }}">
+                        {{ "£%.2f"|format(budget.amount)}}
+                    </td>
+                    <td>
+                        <a href="/budgets/{{ budget.id }}" class="view">
+                            <i class="far fa-eye"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/budgets/{{ budget.id }}/edit" class="edit">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td> 
+                        <form action="/budgets/{{ budget.id }}/delete" method="POST">
+                            <button class="delete">
+                                <i class="fas fa-minus-circle"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>
+                        <a href="/budgets/new" class="new">       
+                                <i class="fas fa-plus-circle"></i>
+                        </a>    
+                    </td>
+                </tr>
+            </table>
 
-    {% endif %}
-</main>
-
+            {% endif %}
+        </main>
+    </section>
 </div>
 
 {% endblock %}

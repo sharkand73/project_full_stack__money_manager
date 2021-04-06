@@ -2,58 +2,59 @@
 
 {% block content %} 
 
-    <main>
-        <div class="inner-header"></div>
-        <table>
-            <tr>
-                <th>Date</th>
-                <th>Merchant</th>
-                <th>Amount</th>
-                <th>Tag</th>
-            </tr>
-            <tr>
-                <form action="/transactions/{{ transaction.id }}/update" method="POST">
-                    <td>
-                        <input type="date" value="{{ transaction.date }}" name="date">
-                    </td>
-                    <td>
-                        <select name="merchant_id" autofocus>
-                            {%for merchant in merchants %}
-                            <option value="{{ merchant.id }}"
-                            {% if merchant.id == transaction.merchant.id %}
-                                selected
-                            {% endif %}
-                            >{{ merchant.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-                    <td>
-                        <input name="amount" type="number" min="0.01" max="10000" step="0.01" placeholder={{ transaction.amount }} required>
-                    </td>
-                    <td>
-                        <select name="tag_id" >
-                            {%for tag in tags %}
-                            <option value="{{ tag.id }}"
-                            {% if tag.id == transaction.tag.id %}
-                                selected
-                            {% endif %}
-                            >{{ tag.category }}</option>
-                            {% endfor %}
-                        </select>
-                    </td>
-                    <td>
-                        <button class="tick">
-                            <i class="fas fa-check-circle"></i>
-                        </button>
-                    </td>
-                </form>                
-            </tr>
-        </table> 
-        <a href="/transactions" class="back">
-            <i class="far fa-arrow-alt-circle-left"></i>
-        </a>       
-    </main>
-
+    <section>
+        <header class="inner-header"></header>
+        <main id="table-area">
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Merchant</th>
+                    <th>Amount</th>
+                    <th>Tag</th>
+                </tr>
+                <tr>
+                    <form action="/transactions/{{ transaction.id }}/update" method="POST">
+                        <td>
+                            <input type="date" value="{{ transaction.date }}" name="date">
+                        </td>
+                        <td>
+                            <select name="merchant_id" autofocus>
+                                {%for merchant in merchants %}
+                                <option value="{{ merchant.id }}"
+                                {% if merchant.id == transaction.merchant.id %}
+                                    selected
+                                {% endif %}
+                                >{{ merchant.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input name="amount" type="number" min="0.01" max="10000" step="0.01" placeholder={{ transaction.amount }} required>
+                        </td>
+                        <td>
+                            <select name="tag_id" >
+                                {%for tag in tags %}
+                                <option value="{{ tag.id }}"
+                                {% if tag.id == transaction.tag.id %}
+                                    selected
+                                {% endif %}
+                                >{{ tag.category }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <button class="tick">
+                                <i class="fas fa-check-circle"></i>
+                            </button>
+                        </td>
+                    </form>                
+                </tr>
+            </table> 
+            <a href="/transactions" class="back">
+                <i class="far fa-arrow-alt-circle-left"></i>
+            </a>       
+        </main>
+    </section>
 </div>
 
 {% endblock %}

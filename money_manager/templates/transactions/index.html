@@ -1,78 +1,80 @@
 {% extends "base.html" %}
 
 {% block content %} 
-    <main>
-        <div class="inner-header"></div>
-        <table>
-            <tr>
-                <th>Date</th>
-                <th>Merchant</th>
-                <th>Amount (£)</th>
-                <th>Tag</th>
-            </tr>
-        {% if transactions == [] %}
-            <!-- <tr><td><br></td></tr> -->
-        </table>
-        <p>There are no transactions to display.</p>
-        <form action="/transactions/new" method="POST">
-            <button>
-                <i class="fas fa-plus-circle"></i>
-            </button>
-        </form>    
-        {% endif %}
+    <section>
+        <header class="inner-header"></header>
+        <main id="table-area">
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Merchant</th>
+                    <th>Amount (£)</th>
+                    <th>Tag</th>
+                </tr>
+            {% if transactions == [] %}
+                <!-- <tr><td><br></td></tr> -->
+            </table>
+            <p>There are no transactions to display.</p>
+            <form action="/transactions/new" method="POST">
+                <button>
+                    <i class="fas fa-plus-circle"></i>
+                </button>
+            </form>    
+            {% endif %}
 
-        {% if transactions != [] %}
-            
-            {% for transaction in transactions %}
-            <tr>
-                <td>
-                    {{ transaction.date.strftime("%d-%m-%Y") }}
-                </td>
-                <td>
-                    {{ transaction.merchant.name }}
-                </td>
-                <td class="money">
-                    {{ "%.2f"|format(transaction.amount) }}
-                </td>
-                <td>
-                    {{ transaction.tag.category}}
-                </td>
-                <td>
-                    <a href="/transactions/{{ transaction.id }}/edit" class="edit">
-                        <i class="far fa-edit"></i>
-                    </a>
-                </td>
-                <td> 
-                    <form action="/transactions/{{ transaction.id }}/delete" method="POST">
-                        <button class="delete">
-                            <i class="fas fa-minus-circle"></i>
-                        </button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-            <tr>
-                <td>
-                    <a href="/transactions/new" class="new">                 
-                        <i class="fas fa-plus-circle"></i>
-                    </a>
-                </td>
-            </tr>
-            
-            <tr><td></td><td></td><td>-------------</td></tr>
-            <tr>
-                <td></td>
-                <td>
-                    TOTAL:
-                </td>
-                <td class="money">
-                    {{ "%.2f"|format(total) }}
-                </td>
-            </tr>
-        </table>
+            {% if transactions != [] %}
+                
+                {% for transaction in transactions %}
+                <tr>
+                    <td>
+                        {{ transaction.date.strftime("%d-%m-%Y") }}
+                    </td>
+                    <td>
+                        {{ transaction.merchant.name }}
+                    </td>
+                    <td class="money">
+                        {{ "%.2f"|format(transaction.amount) }}
+                    </td>
+                    <td>
+                        {{ transaction.tag.category}}
+                    </td>
+                    <td>
+                        <a href="/transactions/{{ transaction.id }}/edit" class="edit">
+                            <i class="far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td> 
+                        <form action="/transactions/{{ transaction.id }}/delete" method="POST">
+                            <button class="delete">
+                                <i class="fas fa-minus-circle"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>
+                        <a href="/transactions/new" class="new">                 
+                            <i class="fas fa-plus-circle"></i>
+                        </a>
+                    </td>
+                </tr>
+                
+                <tr><td></td><td></td><td>-------------</td></tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        TOTAL:
+                    </td>
+                    <td class="money">
+                        {{ "%.2f"|format(total) }}
+                    </td>
+                </tr>
+            </table>
 
-        {% endif %}
-    </main>
+            {% endif %}
+        </main>
+    </section>
 </div>
 
 {% endblock %} 

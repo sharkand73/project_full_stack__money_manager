@@ -2,106 +2,109 @@
 
 {% block content %} 
 
-<main>
-    <div class="inner-header">
-        <ul class="top-menu">
-            <li>
-               <a href="/budgets" class=text-link>VIEW ALL</a>  
-               </li>
-            <li class="selected">DETAILS</li>
-            <li>
-                <a href="/budgets/new" class="text-link">NEW</a>
-            </li>
-            <li>EDIT</li>
-        </ul>
-    </div>
-    <table>
-        <tr>
-            <th>Date</th>
-            <th>Merchant</th>
-            <th>Amount (£)</th>
-            <th>Tag</th>
-        </tr>
-    {% if transactions == [] %}
-        <!-- <tr><td><br></td></tr> -->
-        <tr>
-            <td>No</td><td>transactions.</td>
-        </tr>
-    {% endif %}
+    <section>
+        <header class="inner-header">
+            <ul class="top-menu">
+                <li>
+                <a href="/budgets" class=text-link>VIEW ALL</a>  
+                </li>
+                <li class="selected">DETAILS</li>
+                <li>
+                    <a href="/budgets/new" class="text-link">NEW</a>
+                </li>
+                <li>EDIT</li>
+            </ul>
+        </header>
+        <main id="table-area">
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Merchant</th>
+                    <th>Amount (£)</th>
+                    <th>Tag</th>
+                </tr>
+            {% if transactions == [] %}
+                <!-- <tr><td><br></td></tr> -->
+                <tr>
+                    <td>No</td><td>transactions.</td>
+                </tr>
+            {% endif %}
 
-    {% if transactions != [] %}
+            {% if transactions != [] %}
+                
+                {% for transaction in transactions %}
+                <tr>
+                    <td>
+                        {{ transaction.date.strftime("%d-%m-%Y") }}
+                    </td>
+                    <td>
+                        {{ transaction.merchant.name }}
+                    </td>
+                    <td class="money">
+                        {{ "%.2f"|format(transaction.amount) }}
+                    </td>
+                    <td>
+                        {{ transaction.tag.category}}
+                    </td>
+                    <td>
+                        <a href="/transactions/{{ transaction.id }}/edit">
+                            <button class="edit">
+                                <i class="far fa-edit"></i>
+                            </button>
+                        </a>
+                    </td>
+                    <td> 
+                        <form class="delete" action="/transactions/{{ transaction.id }}/delete" method="POST">
+                            <button class="delete">
+                                <i class="fas fa-minus-circle"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+                
+                <tr><td><br></td></tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        TOTAL SPEND:
+                    </td>
+                    <td class="money">
+                        {{ "%.2f"|format(spend) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        ALLOWANCE:
+                    </td>
+                    <td class="money">
+                        {{ "%.2f"|format(budget.amount) }}
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="money">-------------</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>SURPLUS:</td>
+                    <td class="{{ budget.color }} money">{{ "%.2f"|format((budget.amount - spend)) }}</td>
+                </tr>
+            </table>
+
         
-        {% for transaction in transactions %}
-        <tr>
-            <td>
-                {{ transaction.date.strftime("%d-%m-%Y") }}
-            </td>
-            <td>
-                {{ transaction.merchant.name }}
-            </td>
-            <td class="money">
-                {{ "%.2f"|format(transaction.amount) }}
-            </td>
-            <td>
-                {{ transaction.tag.category}}
-            </td>
-            <td>
-                <a href="/transactions/{{ transaction.id }}/edit">
-                    <button class="edit">
-                        <i class="far fa-edit"></i>
-                    </button>
-                </a>
-            </td>
-            <td> 
-                <form class="delete" action="/transactions/{{ transaction.id }}/delete" method="POST">
-                    <button class="delete">
-                        <i class="fas fa-minus-circle"></i>
-                    </button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    {% endif %}
-        
-        <tr><td><br></td></tr>
-        <tr>
-            <td></td>
-            <td>
-                TOTAL SPEND:
-            </td>
-            <td class="money">
-                {{ "%.2f"|format(spend) }}
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                ALLOWANCE:
-            </td>
-            <td class="money">
-                {{ "%.2f"|format(budget.amount) }}
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td class="money">-------------</td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>SURPLUS:</td>
-            <td class="{{ budget.color }} money">{{ "%.2f"|format((budget.amount - spend)) }}</td>
-        </tr>
-    </table>
 
-    
+            <a href="/budgets" class="back-link">
+                <button class="back">
+                    <i class="far fa-arrow-alt-circle-left"></i>
+                </button>
+            </a>
 
-    <a href="/budgets" class="back-link">
-        <button class="back">
-            <i class="far fa-arrow-alt-circle-left"></i>
-        </button>
-</main>
-
+        </main>
+    </section>
 </div>
 
 {% endblock %}
