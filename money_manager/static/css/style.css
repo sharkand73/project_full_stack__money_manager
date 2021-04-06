@@ -33,11 +33,20 @@ footer {
 
 a {
     text-decoration: none;
+    color: white;
 }
 
 .text-link:visited {
     text-decoration: none;
     color: inherit;
+}
+
+.home {
+    text-decoration: none;
+}
+
+.home:hover {
+    color: yellow;
 }
 
 #sidebar {

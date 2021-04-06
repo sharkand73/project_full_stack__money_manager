@@ -1,5 +1,6 @@
 from models.budget import Budget
 from models.transaction import Transaction
+from models.spend import Spend
 import repositories.merchant_repository as merchant_repo
 import repositories.tag_repository as tag_repo
 import repositories.transaction_repository as transaction_repo
@@ -60,7 +61,7 @@ def display_by_merchant(budget):
     return transaction_repo.process(results)
 
 def display_by_tag(budget):
-    sql_1 = "SLECT * FROM transctions" 
+    sql_1 = "SELECT * FROM transctions" 
     sql_2 = "INNER JOIN tags ON transactions.tag_id = tags.id "
     sql_3 = "ORDER BY tags.category "
     sql_4 = "WHERE (date>=%s AND date<=%s)"
@@ -76,3 +77,37 @@ def spend(budget):
     if spend == None:
         spend = 0
     return spend
+
+def spend_by_merchant(budget):
+    sql_1 = "SELECT merchant_id,SUM(amount) FROM transactions"
+    sql_2 = "INNER JOIN merchants ON transactions.merchant_id=merchants.id "
+    sql_3 = "WHERE (date>=%s AND date<=%s) "
+    sql_4 = "GROUP BY merchant_id "
+    sql_5 = "ORDER BY sum(amount) DESC"
+    sql = sql_1 + sql_2 + sql_3 + sql_4 + sql_5
+    values = [budget.start_date.strftime("%Y-%m-%d"), budget.end_date.strftime("%Y-%m-%d")]
+    results = run_sql(sql, values)
+    spends = []
+    for row in results:
+        merchant = merchant_repo.find_by_id(row['merchant_id'])
+        spend = Spend(row['sum'], merchant = merchant)
+        spends.append(spend)
+    return spends
+
+def spend_by_tag(budget):
+    sql_1 = "SELECT tag_id,SUM(amount) FROM transactions"
+    sql_2 = "INNER JOIN tags ON transactions.tag_id=tags.id "
+    sql_3 = "WHERE (date>=%s AND date<=%s) "
+    sql_4 = "GROUP BY tag_id "
+    sql_5 = "ORDER BY sum(amount) DESC"
+    sql = sql_1 + sql_2 + sql_3 + sql_4 + sql_5
+    values = [budget.start_date.strftime("%Y-%m-%d"), budget.end_date.strftime("%Y-%m-%d")]
+    results = run_sql(sql, values)
+    spends = []
+    for row in results:
+        tag = tag_repo.find_by_id(row['tag_id'])
+        spend = Spend(row['sum'], tag = tag)
+        spends.append(spend)
+    return spends
+        
+    
