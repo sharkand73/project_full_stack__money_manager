@@ -68,10 +68,12 @@ body > div {
 
 
 table {
-    height: 500px;
+    max-height: 500px;
     display: block;
     overflow-y: scroll;
 }
+
+
 
 ul {
     list-style: none;
@@ -165,6 +167,26 @@ th {
     width: 93px;
 }
 
+.transactions-table {
+    table-layout: fixed;
+}
+
+.transactions-cell-1 {
+    width: 120px;
+}
+
+.transactions-cell-2 {
+    width: 200px;
+}
+
+.transactions-cell-3 {
+    width: 100px;
+}
+
+.date-picker {
+    size: 10;
+}
+
 #sidebar > ul > li {
     height: 100;
     width: 150;
@@ -173,4 +195,8 @@ th {
     background-color: navajowhite;
     color:slategrey;
     margin-top:  20px;
+}
+
+.total {
+    float: right;
 }

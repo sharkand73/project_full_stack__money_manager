@@ -4,12 +4,12 @@
     <section>
         <header class="inner-header"></header>
         <main id="table-area">
-            <table>
+            <table class="transactions-table">
                 <tr>
-                    <th>Date</th>
-                    <th>Merchant</th>
-                    <th>Amount (£)</th>
-                    <th>Tag</th>
+                    <th class="transactions-cell-1">Date</th>
+                    <th class="transactions-cell-2">Merchant</th>
+                    <th class="transactions-cell-3">Amount (£)</th>
+                    <th class="transactions-cell-2">Tag</th>
                 </tr>
             {% if transactions == [] %}
                 <!-- <tr><td><br></td></tr> -->
@@ -23,19 +23,18 @@
             {% endif %}
 
             {% if transactions != [] %}
-                
                 {% for transaction in transactions %}
                 <tr>
-                    <td>
+                    <td class="transactions-cell-1">
                         {{ transaction.date.strftime("%d-%m-%Y") }}
                     </td>
-                    <td>
-                        {{ transaction.merchant.name }}
+                    <td class="transactions-cell-2">
+                    {{ transaction.merchant.name }}
                     </td>
-                    <td class="money">
+                    <td class="transactions-cell-3 money">
                         {{ "%.2f"|format(transaction.amount) }}
                     </td>
-                    <td>
+                    <td class="transactions-cell-2">
                         {{ transaction.tag.category}}
                     </td>
                     <td>
@@ -52,18 +51,11 @@
                     </td>
                 </tr>
                 {% endfor %}
-                <tr>
-                    <td>
-                        <a href="/transactions/new" class="new">                 
-                            <i class="fas fa-plus-circle"></i>
-                        </a>
-                    </td>
-                </tr>
                 
-                <tr><td></td><td></td><td>-------------</td></tr>
+                <tr><td></td><td></td><td class="money">-------------</td></tr>
                 <tr>
                     <td></td>
-                    <td>
+                    <td class="total">
                         TOTAL:
                     </td>
                     <td class="money">
@@ -71,7 +63,9 @@
                     </td>
                 </tr>
             </table>
-
+            <a href="/transactions/new" class="new">                 
+                <i class="fas fa-plus-circle"></i>
+            </a>
             {% endif %}
         </main>
     </section>

@@ -4,23 +4,25 @@
     <section>
         <header class="inner-header"></header>
         <main id="table-area">
-            <table>
+            <table class="transactions-table">
                 <tr>
-                    <th>Date</th>
-                    <th>Merchant</th>
-                    <th>Amount (£)</th>
-                    <th>Tag</th>
+                    <th class="transactions-cell-1">Date</th>
+                    <th class="transactions-cell-2">Merchant</th>
+                    <th class="transactions-cell-3">Amount (£)</th>
+                    <th class="transactions-cell-2">Tag</th>
                 </tr>
                 {% for transaction in transactions %}
                 <tr>
-                    <td>{{ transaction.date.strftime("%d-%m-%Y") }}</td>
-                    <td>
+                    <td class="transactions-cell-1">
+                        {{ transaction.date.strftime("%d-%m-%Y") }}
+                    </td>
+                    <td class="transactions-cell-2">
                     {{ transaction.merchant.name }}
                     </td>
-                    <td>
+                    <td class="transactions-cell-3 money">
                         {{ "%.2f"|format(transaction.amount) }}
                     </td>
-                    <td>
+                    <td class="transactions-cell-2">
                         {{ transaction.tag.category}}
                     </td>
                     <td>
@@ -33,20 +35,20 @@
                 {% endfor %}
                 <tr>
                     <form action="/transactions" method="POST">
-                        <td>
-                            <input type="date" name = "date" placeholder="Date" required autofocus>
+                        <td class="transactions-cell-1">
+                            <input type="date" class = "date-picker", name = "date" placeholder="Date" required autofocus>
                         </td>
-                        <td>
+                        <td class="transactions-cell-2">
                             <select name="merchant_id" placeholder="Merchant" required>
                                 {%for merchant in merchants %}
                                 <option value="{{ merchant.id }}">{{ merchant.name }}</option>
                                 {% endfor %}
                             </select>
                         </td>
-                        <td>
+                        <td class="transactions-cell-3 money">
                             <input name="amount" type="number" min="0.01" max="10000" step="0.01" required>
                         </td>
-                        <td>
+                        <td class="transactions-cell-2">
                             <select name="tag_id" placeholder="Tag"  required>
                                 {%for tag in tags %}
                                 <option value="{{ tag.id }}">{{ tag.category }}</option>

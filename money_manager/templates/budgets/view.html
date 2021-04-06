@@ -67,7 +67,7 @@
                 <tr><td><br></td></tr>
                 <tr>
                     <td></td>
-                    <td>
+                    <td class="total">
                         TOTAL SPEND:
                     </td>
                     <td class="money">
@@ -76,7 +76,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>
+                    <td class="total">
                         ALLOWANCE:
                     </td>
                     <td class="money">
@@ -90,7 +90,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td>SURPLUS:</td>
+                    <td class="total">SURPLUS:</td>
                     <td class="{{ budget.color }} money">{{ "%.2f"|format((budget.amount - spend)) }}</td>
                 </tr>
             </table>
