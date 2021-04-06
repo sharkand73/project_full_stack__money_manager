@@ -31,6 +31,14 @@ footer {
     font-size: 8pt;
 }
 
+.homepage {
+    width: 85%;
+}
+
+.intro {
+    font-size: 14pt;
+    line-height: 1.5;
+}
 a {
     text-decoration: none;
     color: inherit;
@@ -56,12 +64,16 @@ a {
     align-content: space-between;
 }
 
+#right-hand-side {
+    background-color: mediumturquoise;
+}
+
 body > div {
     height: 570px;
     display:grid;
     grid-template-columns: 
-    'section main';
-    grid-template-columns: 2fr 8fr;
+    'section main section';
+    grid-template-columns: 3fr 15fr 1fr;
     margin-top: 0;
     padding-top: 0;
 }
@@ -205,4 +217,47 @@ th {
     width: 65%;
     display: flex;
     justify-content: space-between;
+}
+
+.t-outer {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.testimonial {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 65%;
+    height: 130px;
+    border-width: 4px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: purple;
+    background-color:cornsilk;
+    color: purple;
+}
+
+.t-inner {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;  
+    
+}
+
+.quote {
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+    font-size: 14pt;
+}
+
+.person {
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    font-size: 10pt;
 }

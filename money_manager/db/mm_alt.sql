@@ -4,31 +4,13 @@ DROP TABLE tags;
 DROP TABLE budgets;
 DROP TABLE testimonials;
 
-CREATE TABLE tags (
-    category VARCHAR(255),
-    id SERIAL PRIMARY KEY
-);
+CREATE TABLE tags as TABLE tags_backup;
 
-CREATE TABLE merchants (
-    name VARCHAR(255),
-    id SERIAL PRIMARY KEY
-);
+CREATE TABLE merchants as TABLE merchants_backup;
 
-CREATE TABLE transactions (
-    id SERIAL PRIMARY KEY,
-    date DATE,
-    merchant_id int REFERENCES merchants(id) ON DELETE CASCADE,
-    amount float,
-    tag_id int REFERENCES tags(id) ON DELETE CASCADE
-);
+CREATE TABLE transactions as TABLE transactions_backup;
 
-CREATE TABLE budgets (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    start_date DATE,
-    end_date DATE,
-    amount FLOAT
-);
+CREATE TABLE budgets as TABLE budgets_backup;
 
 CREATE TABLE testimonials (
     id SERIAL PRIMARY KEY,
@@ -36,10 +18,6 @@ CREATE TABLE testimonials (
     quote VARCHAR(255)
 );
 
-
-INSERT INTO merchants (name) VALUES ('Tesco');
-INSERT INTO tags (category) VALUES ('Groceries');
-INSERT INTO budgets (name,start_date,end_date,amount) VALUES ('March 2021','2021-03-01', '2021-03-01', 1100);
 
 INSERT INTO testimonials (name, quote) VALUES ('Boaby, pure mad wi'' it, Ruchill', 'It''s bin pure amazin'' so it hus, a''ve definetly got mair money fur Buckie on a Wensday since a''ve did ma budget.'); 
 INSERT INTO testimonials (name, quote) VALUES ('Ashraf, proprietor of Bammy Beverages', 'Sales are through the roof since my clients started using the app.');

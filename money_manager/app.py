@@ -6,6 +6,8 @@ from controllers.merchant_controller import merchants_blueprint
 from controllers.transaction_controller import transactions_blueprint
 from controllers.budget_controller import budgets_blueprint
 
+from repositories.testimonial_repository import select_random
+
 app = Flask(__name__)
 
 app.register_blueprint(tags_blueprint)
@@ -16,7 +18,8 @@ app.register_blueprint(budgets_blueprint)
 
 @app.route("/")
 def home():
-    return render_template("/index.html", title="home")
+    testimonial = select_random()
+    return render_template("/index.html", title="home", testimonial = testimonial)
 
 if __name__ == "__main__":
     app.run(debug=True)

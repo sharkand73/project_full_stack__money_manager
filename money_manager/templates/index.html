@@ -3,16 +3,25 @@
 
     <section>
         <header class="inner-header"></header>
-        <main id="table-area">
-            <h3>Welcome to NUMU$, Maryhill's leading spending tracker app.</h3>
-
-            <p class="testimonial">"It's bin pure amazin' so it hus, a've definetly got mair money fur Buckie on a Wensday since a've did ma budget."
-            <p class="person">- Boaby, pure mad wi' it, Ruchill</p>
-            <p class="testimonial">"Sales are through the roof since my clients started using the app."</p>
-            <p class="person">- Ashraf, proprietor of "Bammy Beverages"</p> 
+        <main class="homepage">
+            <h3>Welcome to NUMUS, Maryhill's leading spending-tracker app!</h3>
+            <section class="t-outer">
+                <div class="testimonial">
+                    <div class="t-inner">
+                        <div class="quote">"{{ testimonial.quote }}"</div>
+                        <div class="person"> - {{ testimonial.name }}</div>
+                    </div>
+                </div>
+            </section>
+            <p class="intro">
+        To use the app, simply begin by recording new transactions using the "transactions" link on the left.
+        As you go, you will need to add merchants and tags if they do not already exist.  You can create a budget 
+        using the "budgets" link, and this will allow you to track your spending within a certain 
+        time period.  Inside the "budgets" area, there are tools to view your spending in different ways.  
+        If your spending goes over the limit you have set, the budget in question will show up in red.
+            </p>
   
         </main>
     </section>
-</div>
 
 {% endblock %}

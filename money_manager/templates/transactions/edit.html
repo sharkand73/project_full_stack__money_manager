@@ -7,10 +7,10 @@
         <main id="table-area">
             <table class="transactions-table">
                 <tr>
-                    <th>Date</th>
-                    <th>Merchant</th>
-                    <th>Amount</th>
-                    <th>Tag</th>
+                    <th class="transactions-cell-1">Date</th>
+                    <th class="transactions-cell-2">Merchant</th>
+                    <th class="transactions-cell-3">Amount (£)</th>
+                    <th class="transactions-cell-2">Tag</th>
                 </tr>
                 <tr>
                     <form action="/transactions/{{ transaction.id }}/update" method="POST">
@@ -55,6 +55,5 @@
             </a>       
         </main>
     </section>
-</div>
 
 {% endblock %}
