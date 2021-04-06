@@ -5,17 +5,18 @@
     <section>
         <header class="inner-header">
             <ul class="top-menu">
-                <li>
+                <li class="tab">
                 <a href="/budgets" class=text-link>VIEW ALL</a>  
                 </li>
                 <li class="selected">DETAILS</li>
-                <li>
+                <li class="tab">
                     <a href="/budgets/new" class="text-link">NEW</a>
                 </li>
-                <li>EDIT</li>
+                <li class="tab">EDIT</li>
             </ul>
         </header>
         <main id="table-area">
+            <div>Viewing: Transactions for budget "{{ budget.name }}"</div>
             <table>
                 <tr>
                     <th>Date</th>
@@ -34,16 +35,16 @@
                 
                 {% for transaction in transactions %}
                 <tr>
-                    <td>
+                    <td class="transactions-cell-1">
                         {{ transaction.date.strftime("%d-%m-%Y") }}
                     </td>
-                    <td>
+                    <td class="transactions-cell-2">
                         {{ transaction.merchant.name }}
                     </td>
-                    <td class="money">
+                    <td class="transaction-cell_3 money">
                         {{ "%.2f"|format(transaction.amount) }}
                     </td>
-                    <td>
+                    <td class="transactions-cell-2">
                         {{ transaction.tag.category}}
                     </td>
                     <td>

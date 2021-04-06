@@ -31,7 +31,13 @@ footer {
     font-size: 8pt;
 }
 
+.homepage-container {
+    display: flex;
+    justify-content: center;
+}
+
 .homepage {
+    margin-top: 20px;
     width: 85%;
 }
 
@@ -51,17 +57,19 @@ a {
 
 .home {
     text-decoration: none;
+    color: cornsilk;
 }
 
 .home:hover {
-    color: yellow;
+    color:sandybrown;
 }
 
 #sidebar {
     background-color: mediumturquoise;
     display: flex;
-    justify-content: center;
-    align-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #right-hand-side {
@@ -78,11 +86,16 @@ body > div {
     padding-top: 0;
 }
 
+#table-area {
+  
+}
+
 
 table {
-    max-height: 500px;
+    max-height: 485px;
     display: block;
     overflow-y: scroll;
+    padding-left: 10px;
 }
 
 
@@ -144,12 +157,20 @@ th {
 }
 
 .top-menu > li {
-    padding: 5px 3px 2px 3px;
+    width: 70px;
+    text-align: center;
+    padding: 5px 3px 10px 3px;
 }
 
 .selected {
     background-color: white;
-    color: black;
+    color: purple;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.tab {
+    color: cornsilk;
 }
 
 .inner-header {
@@ -220,7 +241,7 @@ th {
 }
 
 .t-outer {
-    margin: 30px 0;
+    margin: 70px 0;
     display: flex;
     justify-content: center;
 }
@@ -261,3 +282,20 @@ th {
     padding: 0;
     font-size: 10pt;
 }
+
+.sidebar-button {
+    height: 60px;
+    width: 96px;
+    text-align: center;
+    background: cornsilk;
+    border-width: 4px;
+    border-radius: 8px;
+    border-style: groove;
+    border-color: purple;
+    color: purple;
+}
+
+.sidebar-button:hover {
+    background:sandybrown;
+}
+
