@@ -76,4 +76,16 @@ def delete(id):
     budget_repo.delete(budget)
     return redirect("/budgets")
 
-        
+@budgets_blueprint.route("/budgets/<id>/breakdown")
+def breakdown(id):
+    budget = budget_repo.find_by_id(id)
+    spend_by_merchant = budget_repo.spend_by_merchant(budget)
+    spend_by_tag = budget_repo.spend_by_tag(budget)
+    spend = budget_repo.spend(budget)
+    return render_template("/budgets/breakdown.html", \
+                            spend_by_merchant = spend_by_merchant, \
+                            spend_by_tag = spend_by_tag, \
+                            spend = spend, \
+                            budget = budget, \
+                            title = budget.name + "- breakdown")
+

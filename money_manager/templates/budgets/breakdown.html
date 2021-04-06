@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %} 
+
+    <section>
+        <header class="inner-header">
+            <ul class="top-menu">
+                <li>
+                <a href="/budgets" class=text-link>VIEW ALL</a>  
+                </li>
+                <li class="selected">DETAILS</li>
+                <li>
+                    <a href="/budgets/new" class="text-link">NEW</a>
+                </li>
+                <li>EDIT</li>
+            </ul>
+        </header>
+        <main id="table-area">
+            <table>
+                <tr>
+                    <th>Spending by MERCHANT</th>
+                </tr>
+
+                {% for spend_item in spend_by_merchant %}
+                <tr>
+                    <td>{{ spend_item.merchant.name }}:</td>
+                    <td class="money">{{ "£%.2f"|format(spend_item.amount) }}</td>
+                </tr>
+                {% endfor %}
+
+            <tr><td><br></td></tr>
+            <tr>
+                <th>Spending by TAG</th>
+            </tr>
+            
+                {% for spend_item in spend_by_tag %}
+                <tr>
+                    <td>{{ spend_item.tag.category }}:</td>
+                    <td class="money">{{ "£%.2f"|format(spend_item.amount) }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <a href="/budgets/{{ budget.id }}" class="back">
+                <i class="far fa-arrow-alt-circle-left"></i>  
+            </a>
+                   
+        </main>
+    </section>
+</div>
+
+{% endblock %}

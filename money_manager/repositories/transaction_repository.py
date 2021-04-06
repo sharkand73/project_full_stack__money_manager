@@ -36,6 +36,12 @@ def order_by_tag(): #selects all transactions, ordering them by tag category
     results = run_sql(sql_1 + sql_2 + sql_3)
     return process(results)
 
+def order_by_amount(): #selects all transactions, ordering them by amount
+    sql= "SELECT * FROM transactions ORDER BY amount"
+    results = run_sql(sql)
+    return process(results)
+
+
 def save(transaction):
     sql = "INSERT INTO transactions (date,merchant_id,amount,tag_id) VALUES (%s,%s,%s,%s) RETURNING id"
     values = [transaction.date, transaction.merchant.id, transaction.amount, transaction.tag.id]

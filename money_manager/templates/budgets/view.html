@@ -96,13 +96,14 @@
             </table>
 
         
-
-            <a href="/budgets" class="back-link">
-                <button class="back">
-                    <i class="far fa-arrow-alt-circle-left"></i>
-                </button>
-            </a>
-
+            <div class="budget-options">
+                <a href="/budgets" class="back-link">
+                    <i class="far fa-arrow-alt-circle-left"></i>BACK                    
+                </a>
+                <a href="/budgets/{{ budget.id }}/breakdown" class="fwd-link">
+                    BREAKDOWN <i class="far fa-arrow-alt-circle-right"></i> 
+                </a>
+            </div>
         </main>
     </section>
 </div>

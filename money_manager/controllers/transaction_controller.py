@@ -11,7 +11,7 @@ transactions_blueprint = Blueprint("transactions", __name__)
 
 @transactions_blueprint.route("/transactions")
 def transactions():
-    transaction_list = transaction_repo.order_by_merchant()
+    transaction_list = transaction_repo.select_all()
     total = transaction_repo.sum()[0][0]
     return render_template("/transactions/index.html", total = total, transactions = transaction_list, title = "View Transactions")
 
@@ -54,3 +54,22 @@ def update(id):
     transaction = Transaction(date, merchant, amount, tag, id)
     transaction_repo.update(transaction)
     return redirect("/transactions")
+
+@transactions_blueprint.route("/transactions/order-by-merchant")
+def order_by_merchant():
+    transaction_list = transaction_repo.order_by_merchant()
+    total = transaction_repo.sum()[0][0]
+    return render_template("/transactions/index.html", total = total, transactions = transaction_list, title = "View Transactions - order by merchant")
+
+@transactions_blueprint.route("/transactions/order-by-tag")
+def order_by_tag():
+    transaction_list = transaction_repo.order_by_tag()
+    total = transaction_repo.sum()[0][0]
+    return render_template("/transactions/index.html", total = total, transactions = transaction_list, title = "View Transactions - order by tag")
+
+@transactions_blueprint.route("/transactions/order-by-amount")
+def order_by_amount():
+    transaction_list = transaction_repo.order_by_amount()
+    total = transaction_repo.sum()[0][0]
+    return render_template("/transactions/index.html", total = total, transactions = transaction_list, title = "View Transactions - order by amount")
+

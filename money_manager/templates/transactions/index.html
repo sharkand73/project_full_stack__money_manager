@@ -6,10 +6,26 @@
         <main id="table-area">
             <table class="transactions-table">
                 <tr>
-                    <th class="transactions-cell-1">Date</th>
-                    <th class="transactions-cell-2">Merchant</th>
-                    <th class="transactions-cell-3">Amount (£)</th>
-                    <th class="transactions-cell-2">Tag</th>
+                    <th class="transactions-cell-1">
+                        <a href="/transactions">
+                            Date
+                        </a>
+                    </th>
+                    <th class="transactions-cell-2">
+                        <a href="/transactions/order-by-merchant">
+                            Merchant
+                        </a>
+                    </th>
+                    <th class="transactions-cell-3">
+                        <a href="/transactions/order-by-amount">
+                            Amount (£)
+                        </a>
+                    </th>
+                    <th class="transactions-cell-2">
+                        <a href="/transactions/order-by-tag"> 
+                            Tag
+                        </a>
+                    </th>
                 </tr>
             {% if transactions == [] %}
                 <!-- <tr><td><br></td></tr> -->

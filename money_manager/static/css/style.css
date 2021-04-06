@@ -33,7 +33,7 @@ footer {
 
 a {
     text-decoration: none;
-    color: white;
+    color: inherit;
 }
 
 .text-link:visited {
@@ -107,15 +107,15 @@ th {
     color: mediumblue;
 }
 
-.new, .tick, .view, .new:visited {
+.new, .tick, .view, .new:visited, .fwd-link {
     color: limegreen;
 }
 
-.cross, .back, .back:visited {
+.cross, .back, .back:visited, .back-link {
     color: purple;
 }
 
-.new, .back {
+.new, .back, .fwd {
     font-size: 16pt;
 }
 .grey {
@@ -199,4 +199,10 @@ th {
 
 .total {
     float: right;
+}
+
+.budget-options {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
 }

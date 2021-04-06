@@ -1,3 +1,4 @@
+import pdb
 from models.budget import Budget
 from models.transaction import Transaction
 from models.spend import Spend
@@ -79,7 +80,7 @@ def spend(budget):
     return spend
 
 def spend_by_merchant(budget):
-    sql_1 = "SELECT merchant_id,SUM(amount) FROM transactions"
+    sql_1 = "SELECT merchant_id,SUM(amount) FROM transactions "
     sql_2 = "INNER JOIN merchants ON transactions.merchant_id=merchants.id "
     sql_3 = "WHERE (date>=%s AND date<=%s) "
     sql_4 = "GROUP BY merchant_id "
@@ -89,13 +90,13 @@ def spend_by_merchant(budget):
     results = run_sql(sql, values)
     spends = []
     for row in results:
-        merchant = merchant_repo.find_by_id(row['merchant_id'])
-        spend = Spend(row['sum'], merchant = merchant)
+        merchant = merchant_repo.find_by_id(row[0])
+        spend = Spend(row[1], merchant = merchant)
         spends.append(spend)
     return spends
 
 def spend_by_tag(budget):
-    sql_1 = "SELECT tag_id,SUM(amount) FROM transactions"
+    sql_1 = "SELECT tag_id,SUM(amount) FROM transactions "
     sql_2 = "INNER JOIN tags ON transactions.tag_id=tags.id "
     sql_3 = "WHERE (date>=%s AND date<=%s) "
     sql_4 = "GROUP BY tag_id "
@@ -105,8 +106,8 @@ def spend_by_tag(budget):
     results = run_sql(sql, values)
     spends = []
     for row in results:
-        tag = tag_repo.find_by_id(row['tag_id'])
-        spend = Spend(row['sum'], tag = tag)
+        tag = tag_repo.find_by_id(row[0])
+        spend = Spend(row[1], tag = tag)
         spends.append(spend)
     return spends
         
