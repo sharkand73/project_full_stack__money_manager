@@ -15,10 +15,18 @@ header {
     font-family: 'Times New Roman', Times, serif;
 }
 
+h1 {
+    font-size: 60pt;
+}
+
 h1, h3 {
     font-weight: normal;
     margin-bottom: 0;
     margin-top:0;
+}
+
+h2 {
+    margin-top: 20;
 }
 
 h3 {
@@ -37,13 +45,14 @@ footer {
 }
 
 .homepage {
-    margin-top: 20px;
+    margin-top: 0;
     width: 85%;
+    font-family: calibri;
 }
 
 .intro {
     font-size: 14pt;
-    line-height: 1.5;
+    line-height: 1.2;
 }
 a {
     text-decoration: none;
@@ -68,8 +77,10 @@ a {
     background-color: mediumturquoise;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18pt;
 }
 
 #right-hand-side {
@@ -87,7 +98,7 @@ body > div {
 }
 
 #table-area {
-  
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
@@ -101,7 +112,7 @@ table {
 
 
 ul {
-    list-style: none;
+    list-style: disc;
 }
 
 td {
@@ -157,6 +168,7 @@ th {
 }
 
 .top-menu > li {
+    list-style: none;
     width: 70px;
     text-align: center;
     padding: 5px 3px 10px 3px;
@@ -220,15 +232,6 @@ th {
     size: 10;
 }
 
-#sidebar > ul > li {
-    height: 100;
-    width: 150;
-    padding: 40px 10px;
-    border-radius: 5;
-    background-color: navajowhite;
-    color:slategrey;
-    margin-top:  20px;
-}
 
 .total {
     float: right;
@@ -241,12 +244,13 @@ th {
 }
 
 .t-outer {
-    margin: 70px 0;
+    margin: 35px 0;
     display: flex;
     justify-content: center;
 }
 
 .testimonial {
+    font-family: 'Times New Roman', Times, serif;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -284,8 +288,9 @@ th {
 }
 
 .sidebar-button {
+    margin-top: 15px;
     height: 60px;
-    width: 96px;
+    width: 150px;
     text-align: center;
     background: cornsilk;
     border-width: 4px;
@@ -293,6 +298,11 @@ th {
     border-style: groove;
     border-color: purple;
     color: purple;
+    font-size: 16pt;
+}
+
+#top-button {
+    margin-top: 44px;
 }
 
 .sidebar-button:hover {
