@@ -27,11 +27,9 @@
                 <!-- <tr><td><br></td></tr> -->
             </table>
             <p>You haven't created a budget yet.</p>
-            <form action="/budgets/new" method="POST">
-                <button class="new">
-                    <i class="fas fa-plus-circle"></i>
-                </button>
-            </form>    
+            <a href="/budgets/new">                
+                <i class="fas fa-plus-circle new"></i>
+            </a>    
             {% endif %}
 
             {% if budgets != [] %}
@@ -62,8 +60,8 @@
                     </td>
                     <td> 
                         <form action="/budgets/{{ budget.id }}/delete" method="POST">
-                            <button class="delete">
-                                <i class="fas fa-minus-circle"></i>
+                            <button class="delete-button">
+                                <i class="fas fa-minus-circle delete"></i>
                             </button>
                         </form>
                     </td>

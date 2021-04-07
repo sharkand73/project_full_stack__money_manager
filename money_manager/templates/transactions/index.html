@@ -32,11 +32,9 @@
                 <!-- <tr><td><br></td></tr> -->
             </table>
             <p>There are no transactions to display.</p>
-            <form action="/transactions/new" method="POST">
-                <button>
-                    <i class="fas fa-plus-circle"></i>
-                </button>
-            </form>    
+            <a href="/transactions/new" class="new">
+                    <i class="fas fa-plus-circle"></i>           
+            </a>    
             {% endif %}
 
             {% if transactions != [] %}
@@ -61,8 +59,8 @@
                     </td>
                     <td> 
                         <form action="/transactions/{{ transaction.id }}/delete" method="POST">
-                            <button class="delete">
-                                <i class="fas fa-minus-circle"></i>
+                            <button class="delete-button">
+                                <i class="fas fa-minus-circle delete"></i>
                             </button>
                         </form>
                     </td>

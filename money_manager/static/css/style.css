@@ -88,7 +88,7 @@ a {
 }
 
 body > div {
-    height: 570px;
+    height: 585px;
     display:grid;
     grid-template-columns: 
     'section main section';
@@ -128,7 +128,7 @@ th {
     text-align: right;
 }
 
-.delete, .tick, .cross, .back, .view, .edit {
+.delete-button, .tick-button {
     background: none;
     border: none;
     padding: 0;
@@ -137,26 +137,48 @@ th {
 
 .delete {
     color: #fe2c54;
+    font-size: 18px;
+}
+
+.delete:hover {
+    color: hotpink;
 }
 
 .edit, .edit:visited {
     color: mediumblue;
+    font-size: 18px;
+}
+
+.edit:hover {
+    color: rgb(0, 191, 255);
 }
 
 .new, .tick, .view, .new:visited, .fwd-link {
-    color: limegreen;
+    color: rgb(54, 184, 28);
+    font-size: 18px;
+}
+
+.new:hover, .view:hover, .tick:hover, .fwd-link:hover {
+    color: lime;
 }
 
 .cross, .back, .back:visited, .back-link {
     color: purple;
+    font-size: 18px;
 }
 
-.new, .back, .fwd {
-    font-size: 16pt;
+.cross:hover, .back:hover, .back-link:hover {
+    color: magenta;
 }
-.grey {
+
+.new, .back, .fwd, .back-link, .fwd-link {
+    font-size: 25px;
+}
+.grey, .grey:hover {
     color: grey;
+    font-size: 18px;
 }
+
 
 .top-menu {
     width: 80%;
@@ -235,6 +257,13 @@ th {
 
 .total {
     float: right;
+}
+
+.budget-options-container {
+    margin-top: 4px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .budget-options {

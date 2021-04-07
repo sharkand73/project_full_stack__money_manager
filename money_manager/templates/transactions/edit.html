@@ -10,7 +10,7 @@
                     <th class="transactions-cell-1">Date</th>
                     <th class="transactions-cell-2">Merchant</th>
                     <th class="transactions-cell-3">Amount (£)</th>
-                    <th class="transactions-cell-2">Tag</th>
+                    <th class="transactions-cell-1">Tag</th>
                 </tr>
                 <tr>
                     <form action="/transactions/{{ transaction.id }}/update" method="POST">
@@ -43,8 +43,8 @@
                             </select>
                         </td>
                         <td>
-                            <button class="tick">
-                                <i class="fas fa-check-circle"></i>
+                            <button class="tick-button">
+                                <i class="fas fa-check-circle tick"></i>
                             </button>
                         </td>
                     </form>                

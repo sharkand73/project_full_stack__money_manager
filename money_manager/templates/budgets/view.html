@@ -48,16 +48,14 @@
                         {{ transaction.tag.category}}
                     </td>
                     <td>
-                        <a href="/transactions/{{ transaction.id }}/edit">
-                            <button class="edit">
-                                <i class="far fa-edit"></i>
-                            </button>
+                        <a href="/transactions/{{ transaction.id }}/edit">  
+                            <i class="far fa-edit edit"></i>
                         </a>
                     </td>
                     <td> 
                         <form class="delete" action="/transactions/{{ transaction.id }}/delete" method="POST">
-                            <button class="delete">
-                                <i class="fas fa-minus-circle"></i>
+                            <button class="delete-button">
+                                <i class="fas fa-minus-circle delete"></i>
                             </button>
                         </form>
                     </td>
@@ -96,14 +94,15 @@
                 </tr>
             </table>
 
-        
-            <div class="budget-options">
-                <a href="/budgets" class="back-link">
-                    <i class="far fa-arrow-alt-circle-left"></i>BACK                    
-                </a>
-                <a href="/budgets/{{ budget.id }}/breakdown" class="fwd-link">
-                    BREAKDOWN <i class="far fa-arrow-alt-circle-right"></i> 
-                </a>
+            <div class="budget-options-container">
+                <div class="budget-options">
+                    <a href="/budgets" class="back-link">
+                        <i class="far fa-arrow-alt-circle-left"></i>BACK                    
+                    </a>
+                    <a href="/budgets/{{ budget.id }}/breakdown" class="fwd-link">
+                        BREAKDOWN <i class="far fa-arrow-alt-circle-right"></i> 
+                    </a>
+                </div>
             </div>
         </main>
     </section>
