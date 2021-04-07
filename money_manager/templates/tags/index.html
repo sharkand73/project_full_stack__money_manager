@@ -18,12 +18,22 @@
                             <i class="far fa-edit"></i>
                         </a>
                     </td>
-                    <td> 
+                    
+                    {% if tag.in_use == False %}
+                    <td>
                         <form action="/tags/{{ tag.id }}/delete" method="POST">
                             <button class="delete-button">
                                 <i class="fas fa-minus-circle delete"></i>
                             </button>
                         </form>
+                    </td>
+                    {% endif %}
+                    {% if tag.in_use %}
+                    <td class="tooltip">
+                        <i class="fas fa-minus-circle grey"></i>
+                        <span class="tooltip-text">This tag is in use in a transaction</span>
+                    </td>  
+                    {% endif %}                   
                     </td>
                 </tr>
                 {% endfor %}

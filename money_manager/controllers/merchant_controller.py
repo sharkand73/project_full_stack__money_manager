@@ -5,12 +5,16 @@ from flask import Blueprint
 
 import repositories.merchant_repository as merchant_repo
 from models.merchant import Merchant
+from repositories.transaction_repository import merchant_in_use
+
 
 merchants_blueprint = Blueprint("merchants", __name__)
 
 @merchants_blueprint.route("/merchants")
 def merchants():
     merchants_list = merchant_repo.select_all()
+    for merchant in merchants_list:
+        merchant.in_use = merchant_in_use(merchant)
     return render_template("/merchants/index.html", merchants = merchants_list, title = "View merchants")
 
 @merchants_blueprint.route("/merchants/<id>/edit")

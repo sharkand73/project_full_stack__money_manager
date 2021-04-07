@@ -18,12 +18,22 @@
                             <i class="far fa-edit"></i>
                         </a>
                     </td>
-                    <td> 
+                    
+                        {% if merchant.in_use == False %}
+                        <td>
                         <form action="/merchants/{{ merchant.id }}/delete" method="POST">
                             <button class="delete-button">
                                 <i class="fas fa-minus-circle delete"></i>
                             </button>
                         </form>
+                        </td>
+                        {% endif %}
+                        {% if merchant.in_use %}
+                        <td class="tooltip">
+                            <i class="fas fa-minus-circle grey"></i>
+                            <span class="tooltip-text">This merchant is in use in a transaction</span>
+                        </td>  
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}

@@ -80,3 +80,14 @@ def sum():
     total = run_sql(sql)
     return total
 
+def tag_in_use(tag):
+    sql = "SELECT COUNT(tag_id) FROM transactions WHERE tag_id=%s"
+    values = [tag.id]
+    tag_count = run_sql(sql, values)[0][0]
+    return (tag_count >0)
+
+def merchant_in_use(merchant):
+    sql = "SELECT COUNT(merchant_id) FROM transactions WHERE merchant_id=%s"
+    values = [merchant.id]
+    merchant_count = run_sql(sql, values)[0][0]
+    return (merchant_count >0)

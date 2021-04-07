@@ -39,6 +39,7 @@ def delete(tag):
         sql = "DELETE FROM tags WHERE id=%s"
         values = [tag.id]
         run_sql(sql, values)
+
     
 
     

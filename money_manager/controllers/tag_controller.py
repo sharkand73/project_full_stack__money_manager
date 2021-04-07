@@ -4,12 +4,16 @@ from flask import Flask, render_template, redirect, request
 from flask import Blueprint
 from models.tag import Tag
 import repositories.tag_repository as tag_repo
+from repositories.transaction_repository import tag_in_use
+
 
 tags_blueprint = Blueprint("tags", __name__)
 
 @tags_blueprint.route("/tags")
 def tags():
     tags_list = tag_repo.select_all()
+    for tag in tags_list:
+        tag.in_use = tag_in_use(tag)
     return render_template("/tags/index.html", tags = tags_list, title = "View Tags")
 
 @tags_blueprint.route("/tags/<id>/edit")
