@@ -250,6 +250,10 @@ th {
     width: 100px;
 }
 
+.transactions-cell-4 {
+    width: 300px;
+}
+
 .date-picker {
     size: 10;
 }

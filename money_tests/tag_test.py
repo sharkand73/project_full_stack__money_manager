@@ -19,3 +19,5 @@ class TestTag(unittest.TestCase):
     def test_tag_id(self):
         self.assertEqual(2, self.tag_2.id)
 
+    
+

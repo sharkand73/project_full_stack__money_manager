@@ -40,3 +40,11 @@ def delete(merchant):
         values = [merchant.id]
         run_sql(sql, values)
     
+def find_by_name(merchant_name):
+    sql = "SELECT * FROM merchants WHERE name=%s"
+    values = [merchant_name]
+    results = run_sql(sql, values)
+    if results:
+        merchant = Merchant(merchant_name, results[0]['id'])
+        return merchant
+    

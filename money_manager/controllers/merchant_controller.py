@@ -42,10 +42,11 @@ def new():
 
 @merchants_blueprint.route("/merchants", methods=["POST"])
 def save():
-    merchants = merchant_repo.select_all()
-    names = [merchant.name for merchant in merchants]
-    new_name = request.form['name']
-    new_merchant = Merchant(new_name)
-    if new_name and (new_name not in names):
-        merchant_repo.save(new_merchant)
-    return redirect("/merchants")
+    merchants = merchant_repo.select_all()              # GET A LIST OF ALL MERCHANTS FROM THE DB TABLE
+    names = [merchant.name for merchant in merchants]   # MAKE A LIST OF MERCHANT NAMES OUT OF THIS LIST
+    new_name = request.form['name']                     # TAKE THE USER'S INPUT (A MERCHANT NAME)
+    new_merchant = Merchant(new_name)                   # CREATE A NEW MERCHANT OBJECT OUT OF IT
+    if new_name and (new_name not in names):            # CHECK NAME IS NOT EMPTY
+                                                        # CHECK NAME IS NOT IN USE
+        merchant_repo.save(new_merchant)                # SAVE NEW MERCHANT TO DATABASE             
+    return redirect("/merchants")                       # RETURN TO "SHOW MERCHANTS"

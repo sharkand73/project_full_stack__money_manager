@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %} 
+    <section>
+        <header class="inner-header"></header>
+        <main id="table-area">
+            <div>Viewing: SANTANDER import.</div>
+            <table class="transactions-table">
+                <tr>
+                    <th class="transactions-cell-1">
+                        <a href="/plugins/show">
+                            Date
+                        </a>
+                    </th>
+                    <th class="transactions-cell-4">
+                            Merchant
+                    </th>
+                    <th class="transactions-cell-3">
+                        Amount (£)
+                    <th class="transactions-cell-2">
+                            Tag
+                    </th>
+                </tr>
+           
+                {% for transaction in transactions %}
+                <tr>
+                    <td class="transactions-cell-1">
+                        {{ transaction.date.strftime("%d-%m-%Y") }}
+                    </td>
+                    <td class="transactions-cell-4">
+                    {{ transaction.merchant.name }}
+                    </td>
+                    <td class="transactions-cell-3 money">
+                        {{ "%.2f"|format(transaction.amount) }}
+                    </td>
+                    <td class="transactions-cell-2">
+                        {{ transaction.tag.category}}
+                    </td>
+                    
+                    
+                </tr>
+                {% endfor %}
+                
+                
+            </table>
+            
+            <div class="plugin_buttons">
+                <a href="/plugins">
+                    <button>CANCEL</button>
+                </a>
+
+                <a href="/plugins/save">
+                    <button>SAVE</button>
+                </a>
+            </div>
+            
+            
+        </main>
+    </section>
+
+{% endblock %} 

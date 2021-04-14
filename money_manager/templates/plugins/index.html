@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %} 
+    <section>
+        <header class="inner-header"></header>
+        <main id="plugin-main">
+            <h4>
+                The only plugin currently available is the Santander plugin.
+            </h4>
+            How it works:
+            <ul>
+                <li>
+                Please download you Santander statements in .txt format
+                </li>
+                <li>
+                    Click below to import one such file
+                </li>
+                <li>The plugin will then help you register the transactions</li>
+            </ul>
+            
+            <section>Choose bank statement file for import:
+                <form action="/plugins/load" method="post">
+                    <input type="file" name="filename" required>
+                    <button>Open</button>
+                </form>
+
+            </section>
+        </main>
+    </section>
+
+{% endblock %} 
+

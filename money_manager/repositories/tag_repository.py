@@ -40,6 +40,12 @@ def delete(tag):
         values = [tag.id]
         run_sql(sql, values)
 
-    
+def find_by_category(tag_category):
+    sql = "SELECT * FROM tags WHERE category=%s"
+    values = [tag_category]
+    results = run_sql(sql, values)
+    if results:
+        tag = Tag(tag_category, results[0]['id'])
+        return tag
 
     

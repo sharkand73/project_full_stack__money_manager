@@ -5,6 +5,7 @@ from controllers.tag_controller import tags_blueprint
 from controllers.merchant_controller import merchants_blueprint
 from controllers.transaction_controller import transactions_blueprint
 from controllers.budget_controller import budgets_blueprint
+from controllers.plugin_controller import plugins_blueprint
 
 from repositories.testimonial_repository import select_random
 
@@ -14,6 +15,7 @@ app.register_blueprint(tags_blueprint)
 app.register_blueprint(merchants_blueprint)
 app.register_blueprint(transactions_blueprint)
 app.register_blueprint(budgets_blueprint)
+app.register_blueprint(plugins_blueprint)
 
 
 @app.route("/")
