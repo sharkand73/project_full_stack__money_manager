@@ -11,17 +11,17 @@ Numus is an app in which you log your spending transactions.  You can create "me
 # Setup
 You will need to have postgreSQL and flask installed.
 
-*1. From the money_manager directory, type:
+1. From the money_manager directory, type:
 
       #psql -d money_manager -f db/money_manager.sql
       
     to create the database and initiate the tables.
 
-*2. From the same directory, then type:
+2. From the same directory, then type:
       
       #flask run
       
-*3. Open a browser window with the address 
+3. Open a browser window with the address 
 
       #http://localhost:5000/ 
 
@@ -36,7 +36,9 @@ a tag (spending category), and an amount (£).  These transactions are stored in
 Budgets can be viewed at three levels: 
 
 *Basic - the dates, the spending limit, and whether the user is over or under budget (budgets that are overspent are coloured red).
+
 *Transaction - all the transactions pertaining to a budget can be viewed.
+
 *Breakdown - the budget is broken down into spending by merchant and spending by tag.
 
 After the project end, a "plug-in" was added which allows the user to import an entire bank statement from a Santander bank account, providing the transactions have been saved in Santander's text format.
